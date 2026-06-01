@@ -5,15 +5,15 @@ import {
   FaWhatsapp, 
   FaTimes, 
   FaCheckCircle, 
+  FaInfoCircle, 
+  FaTags,
   FaArrowRight,
   FaBoxes,
-  FaTh,
-  FaUser,
-  FaPhoneAlt
+  FaTh
 } from 'react-icons/fa';
 import '../styles/Shop.css';
 
-// Import assets up front using standard ES Module syntax so Vite maps paths natively
+// Import local image assets upfront
 import Image1 from '../assets/1.png';
 import Image2 from '../assets/2.png';
 import Image3 from '../assets/3.png';
@@ -21,7 +21,7 @@ import Image4 from '../assets/4.png';
 import Image5 from '../assets/5.png';
 import Image6 from '../assets/6.png';
 
-const staticImages = [Image1, Image2, Image3, Image4, Image5, Image6];
+const staticImagePool = [Image1, Image2, Image3, Image4, Image5, Image6];
 
 const generateBoutiqueInventory = () => {
   const customCategories = ['apparel', 'shoes', 'bags'];
@@ -40,7 +40,7 @@ const generateBoutiqueInventory = () => {
     { name: "Official Leather Dress Loafers", colors: ["Mahogany", "Black"], sizes: ["40", "41", "42"] },
     { name: "All-Weather Heavy Duty Boots", colors: ["Olive Drab"], sizes: ["42", "43", "44"] },
     { name: "Premium Structured Leather Tote", colors: ["Tan", "Jet Black"], sizes: ["Medium Frame"] },
-    { name: "Waterproof Commuter Tech Backpack", colors: ["Carbon Charcoal"], sizes: ["25L Standard"] },
+    { name: "Waterproof Commuter Tech Backpack", colors: ["Charcoal Grey"], sizes: ["25L Standard"] },
     { name: "Luxury Chain Evening Clutch", colors: ["Champagne Gold"], sizes: ["Compact Scale"] }
   ];
 
@@ -62,7 +62,7 @@ const generateBoutiqueInventory = () => {
       sizes: blueprint.sizes,
       colors: blueprint.colors,
       quality: qualityGrades[(i - 1) % qualityGrades.length],
-      img: staticImages[(i - 1) % staticImages.length]
+      img: staticImagePool[(i - 1) % staticImagePool.length]
     });
   }
   return completeCatalog;
@@ -74,10 +74,14 @@ const Shop = () => {
   const [filterState, setFilterState] = useState('all');
   const [activeOrderProduct, setActiveOrderProduct] = useState(null);
   
+  // Form input field tracking state
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
+  
+  // FIXED: Explicitly initialized termsAccepted state here to fix the console error!
+  const [termsAccepted, setTermsAccepted] = useState(true);
 
   const displayedProducts = filterState === 'all' 
     ? storeProducts 
@@ -87,6 +91,7 @@ const Shop = () => {
     setActiveOrderProduct(product);
     setSelectedSize(product.sizes[0]); 
     setSelectedColor(product.colors[0]); 
+    setTermsAccepted(true); // reset checkbox default
   };
 
   const handleDismissOrderWindow = () => {
@@ -99,6 +104,9 @@ const Shop = () => {
     e.preventDefault();
     if (!activeOrderProduct || !customerName || !customerPhone) {
       return alert("Please enter your name and phone number to complete the order!");
+    }
+    if (!termsAccepted) {
+      return alert("You must accept the cross-border transit terms to submit your order!");
     }
 
     const targetWhatsAppLine = "250786257303"; 
@@ -133,24 +141,21 @@ Please dispatch this inventory batch data into the active cargo file loading man
   return (
     <div className="shop-view-container">
       
-      {/* ================= HEADER HERO BANNER ================= */}
       <div className="shop-header-banner">
         <div className="banner-txt-wrapper">
           <span className="live-pill"><FaBoxes /> U & J Cross-Border Storefront</span>
           <h1>Premium Digital Import Catalog</h1>
-          <p>Explore weekly product releases dispatched directly from Dar es Salaam port hubs to our Kigali terminal station points flawlessly.</p>
+          <p>Explore product releases dispatched directly from Dar es Salaam port hubs straight to our Kigali terminal warehouse points smoothly.</p>
         </div>
       </div>
 
-      {/* ================= CONTROLS & FILTERING ================= */}
       <div className="catalog-filter-controls">
         <button className={`filter-node ${filterState === 'all' ? 'node-active' : ''}`} onClick={() => setFilterState('all')}><FaTh /> All Batches</button>
         <button className={`filter-node ${filterState === 'apparel' ? 'node-active' : ''}`} onClick={() => setFilterState('apparel')}><FaShoppingBag /> Apparel Drops</button>
         <button className={`filter-node ${filterState === 'shoes' ? 'node-active' : ''}`} onClick={() => setFilterState('shoes')}><FaArrowRight /> Footwear Selection</button>
-        <button className={`filter-node ${filterState === 'bags' ? 'node-active' : ''}`} onClick={() => setFilterState('bags')}><FaCheckCircle /> Luxury Bags</button>
+        <button className={`filter-node ${filterState === 'bags' ? 'node-active' : ''}`} onClick={() => setFilterState('bags')}><FaBoxes /> Luxury Bags</button>
       </div>
 
-      {/* ================= PRODUCTS GRID SYSTEM ================= */}
       <div className="catalog-products-grid">
         {displayedProducts.map((product) => (
           <div key={product.id} className="store-product-card">
@@ -175,7 +180,7 @@ Please dispatch this inventory batch data into the active cargo file loading man
                   <span className="attr-val">{product.colors.join(' | ')}</span>
                 </div>
                 <div className="attribute-row">
-                  <span className="attr-lbl">Logistics:</span>
+                  <span className="attr-lbl">Logistics corridor:</span>
                   <span className="attr-val global-route-highlight">Dar to Kigali Express</span>
                 </div>
               </div>
@@ -186,7 +191,7 @@ Please dispatch this inventory batch data into the active cargo file loading man
                   <span className="price-digits">{product.price.toLocaleString()}</span>
                 </div>
                 <button type="button" className="btn btn-order-trigger" onClick={() => handleTriggerOrderWindow(product)}>
-                  Order via WhatsApp <FaWhatsapp className="wa-icon-margin" />
+                  Order via WhatsApp
                 </button>
               </div>
             </div>
@@ -195,73 +200,97 @@ Please dispatch this inventory batch data into the active cargo file loading man
         ))}
       </div>
 
-      {/* ================= ORDERING MODAL DRAWER ================= */}
       {activeOrderProduct && (
-        <div className="modal-overlay-backdrop">
-          <div className="modal-checkout-card-box">
-            <button className="modal-dismiss-x-btn" onClick={handleDismissOrderWindow}>
-              <FaTimes />
-            </button>
+        <div className="modal-backdrop-layer">
+          <div className="modal-content-window">
             
-            <div className="modal-checkout-header">
-              <h2>Confirm Cargo Booking</h2>
-              <p>Direct Procurement Route via Active WhatsApp Dispatch Line</p>
+            <div className="modal-header-bar">
+              <h2>Confirm WhatsApp Order</h2>
+              <button type="button" className="modal-close-x-btn" onClick={handleDismissOrderWindow}>
+                <FaTimes />
+              </button>
             </div>
 
-            <div className="modal-item-preview-row">
-              <img src={activeOrderProduct.img} alt={activeOrderProduct.name} />
-              <div className="preview-details">
-                <h4>{activeOrderProduct.name}</h4>
-                <p className="preview-price">{activeOrderProduct.price.toLocaleString()} RWF</p>
-              </div>
-            </div>
-
-            <form className="modal-checkout-form" onSubmit={processOrderWhatsAppPayload}>
+            <form onSubmit={processOrderWhatsAppPayload} className="modal-form-body">
               
-              <div className="form-double-column">
-                <div className="form-input-group">
-                  <label>Select Size</label>
-                  <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
-                    {activeOrderProduct.sizes.map((s, idx) => (
-                      <option key={idx} value={s}>{s}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="form-input-group">
-                  <label>Select Color</label>
-                  <select value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
-                    {activeOrderProduct.colors.map((c, idx) => (
-                      <option key={idx} value={c}>{c}</option>
-                    ))}
-                  </select>
+              <div className="modal-product-summary-box">
+                <img src={activeOrderProduct.img} alt={activeOrderProduct.name} className="modal-summary-thumb" />
+                <div className="modal-summary-text">
+                  <h3>{activeOrderProduct.name}</h3>
+                  <p className="modal-premium-spec-tag"><FaCheckCircle /> {activeOrderProduct.quality}</p>
+                  <p className="modal-price-indicator">Value Rate: <strong>{activeOrderProduct.price.toLocaleString()} RWF</strong></p>
                 </div>
               </div>
 
-              <div className="form-input-group">
-                <label>Your Full Name</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Jean Luc"
+              <div className="modal-input-field-group">
+                <label htmlFor="input-customer-name">Enter Your Full Name:</label>
+                <input 
+                  type="text" 
+                  id="input-customer-name" 
+                  placeholder="e.g., Mahoro Jeanne"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  required
+                  required 
                 />
               </div>
 
-              <div className="form-input-group">
-                <label>WhatsApp Phone Number</label>
-                <input
-                  type="tel"
-                  placeholder="e.g. +250 786 257 303"
+              <div className="modal-input-field-group">
+                <label htmlFor="input-customer-phone">Enter Your Phone Number:</label>
+                <input 
+                  type="tel" 
+                  id="input-customer-phone" 
+                  placeholder="e.g., 0788123456"
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
                   required
                 />
               </div>
 
-              <button type="submit" className="btn btn-submit-order">
-                Send Order to Manifest Desk <FaWhatsapp />
+              <div className="modal-input-field-group">
+                <label htmlFor="select-order-size">Size Required:</label>
+                <select 
+                  id="select-order-size" 
+                  value={selectedSize} 
+                  onChange={(e) => setSelectedSize(e.target.value)}
+                >
+                  {activeOrderProduct.sizes.map((size, index) => (
+                    <option key={index} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="modal-input-field-group">
+                <label htmlFor="select-order-color">Color Required:</label>
+                <select 
+                  id="select-order-color" 
+                  value={selectedColor} 
+                  onChange={(e) => setSelectedColor(e.target.value)}
+                >
+                  {activeOrderProduct.colors.map((color, index) => (
+                    <option key={index} value={color}>
+                      {color}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="modal-input-field-group checkbox-row" style={{ display: 'flex', flexDirection: 'row', gap: '8px', alignItems: 'center', marginBottom: '20px' }}>
+                <input
+                  type="checkbox"
+                  id="input-terms-accept"
+                  style={{ width: 'auto' }}
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                />
+                <label htmlFor="input-terms-accept" style={{ fontSize: '0.8rem', color: '#4a5568', cursor: 'pointer' }}>
+                  I accept the cargo manifest terms and order conditions.
+                </label>
+              </div>
+
+              <button type="submit" className="btn btn-send-order">
+                Send Order via WhatsApp
               </button>
             </form>
           </div>
