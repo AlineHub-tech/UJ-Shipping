@@ -164,6 +164,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   border: 1px solid #e2e8f0;
+  width: 100%;
 }
 
 .metric-card-box {
@@ -171,9 +172,13 @@
   align-items: center;
   gap: 20px;
   transition: transform 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.metric-card-box:hover { transform: translateY(-2px); }
+.metric-card-box:hover { 
+  transform: translateY(-2px); 
+}
 
 .metric-icon-sphere {
   width: 52px;
@@ -187,12 +192,50 @@
   color: #007a5e;
   font-size: 1.3rem;
 }
+
 .metric-card-box:hover .metric-icon-sphere {
   animation: globalPulse 1.5s infinite;
 }
 
-.metric-text-column h3 { margin: 0 0 4px 0; font-size: 1.1rem; color: #2c3e50; font-weight: 700; }
-.metric-text-column p { margin: 0; font-size: 0.88rem; color: #718096; line-height: 1.5; }
+.metric-text-column {
+  flex: 1;
+  min-width: 0; /* Prevents long unbreakable text strings from blowing out layout bounds */
+}
+
+.metric-text-column h3 { 
+  margin: 0 0 4px 0; 
+  font-size: 1.1rem; 
+  color: #2c3e50; 
+  font-weight: 700; 
+}
+
+.metric-text-column p { 
+  margin: 0; 
+  font-size: 0.88rem; 
+  color: #718096; 
+  line-height: 1.5; 
+  word-wrap: break-word; /* Forces long text strings to break line fields naturally instead of breaking out */
+}
+
+/* ==========================================================================
+   TARGETED MOBILE RESPONSIVE CORRECTION FOR EXTRA SPACE
+   ========================================================================== */
+@media (max-width: 640px) {
+  .logistics-value-metrics-section {
+    padding: 20px 12px; /* Reduces overall outer page boundary squeeze */
+  }
+
+  .section-grid-container {
+    padding: 20px 16px;
+    gap: 24px;
+  }
+
+  .metric-card-box {
+    flex-direction: column !important; /* Stacks icon vertically on top of text fields */
+    text-align: center !important;     /* Centers all text lines elegantly */
+    gap: 12px;
+  }
+}
 
 /* --- Headers Alignment --- */
 .section-header-alignment { text-align: center; margin: 55px 0 40px 0; }
