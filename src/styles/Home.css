@@ -154,7 +154,7 @@
 }
 
 .section-grid-container {
-  max-width: 1400px;
+  max-width: 1700px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -313,3 +313,170 @@
 
 .product-card-footer-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .price-tag-frw { font-size: 1.2rem; font-weight: 800; color: #007a5e; }.order-btn-shortcut {font-size: 0.88rem;font-weight: 700;color: #718096;display: flex;align-items: center;gap: 4px;transition: all 0.2s ease;}.home-store-product-card:hover .order-btn-shortcut { color: #007a5e; gap: 8px; }/* --- Section 5: Double Splitted Promotion Panels --- */.split-action-promotions-section {max-width: 1400px;margin: 45px auto 70px auto;padding: 0 24px;display: grid;grid-template-columns: 1fr 1fr;gap: 26px;box-sizing: border-box;}.promo-banner-card { position: relative; padding: 45px; border-radius: 12px; overflow: hidden; color: #ffffff; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); }.banner-green-gradient { background: linear-gradient(135deg, #007a5e 0%, #005642 100%); }.banner-charcoal-gradient { background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); }.promo-content-text { position: relative; z-index: 5; max-width: 410px; }.promo-content-text h2 { font-size: 1.7rem; font-weight: 800; margin: 0 0 12px 0; letter-spacing: -0.3px; }.promo-content-text p { font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; margin: 0 0 26px 0; }.btn-promo-white { background-color: #ffffff !important; color: #007a5e !important; padding: 11px 24px !important; font-size: 0.9rem !important; border-radius: 6px !important; font-weight: 700; text-decoration: none; }.btn-promo-white:hover { background-color: #fcd116 !important; color: #1a202c !important; transform: translateY(-2px); }.btn-promo-emerald { background-color: #007a5e !important; color: #ffffff !important; padding: 11px 24px !important; font-size: 0.9rem !important; border-radius: 6px !important; font-weight: 700; text-decoration: none; }.btn-promo-emerald:hover { background-color: #005642 !important; transform: translateY(-2px); }/* Glowing effects on interactive promotional buttons */.button-glow:hover {box-shadow: 0 0 15px rgba(252, 209, 22, 0.6);}.promo-icon-bg { position: absolute; right: -15px; bottom: -20px; font-size: 9.5rem; color: rgba(255, 255, 255, 0.05); z-index: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }.float-animation { animation: subtleFloat 5s ease-in-out infinite; }/* ==========================================================================5. COMPREHENSIVE RESPONSIVE DESIGN ADJUSTMENTS========================================================================== */@media (max-width: 1024px) {.homepage-hero-corridor-grid { grid-template-columns: 1fr; }.hero-side-promotions-column { flex-direction: row; }.split-action-promotions-section { grid-template-columns: 1fr; }}@media (max-width: 680px) {.hero-side-promotions-column { flex-direction: column; }.catalog-preview-products-grid { grid-template-columns: 1fr !important; }.home-store-product-card { max-width: 320px; margin: 0 auto; width: 100%; }}
+/* ==========================================================================
+   UPDATED SECTION 5: SPLIT CALL TO ACTIONS BANNERS WITH FIXES
+   ========================================================================== */
+.split-action-promotions-section {
+  max-width: 1400px;
+  margin: 45px auto 70px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.promo-banner-card { 
+  position: relative; 
+  padding: 45px; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  color: #ffffff; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banner-green-gradient { 
+  background: linear-gradient(135deg, #007a5e 0%, #005642 100%); 
+}
+
+.banner-charcoal-gradient { 
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); 
+}
+
+/* Fixed text layout bounds to ensure zero mobile side leakage */
+.promo-content-text { 
+  position: relative; 
+  z-index: 5; 
+  max-width: 410px; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.promo-content-text h2 { 
+  font-size: 1.7rem; 
+  font-weight: 800; 
+  margin: 0 0 12px 0; 
+  letter-spacing: -0.3px; 
+  line-height: 1.3;
+}
+
+.promo-content-text p { 
+  font-size: 0.95rem; 
+  line-height: 1.6; 
+  color: #e2e8f0; 
+  margin: 0 0 26px 0; 
+}
+
+.btn-promo-white { 
+  background-color: #ffffff !important; 
+  color: #007a5e !important; 
+  padding: 11px 24px !important; 
+  font-size: 0.9rem !important; 
+  border-radius: 6px !important; 
+  font-weight: 700; 
+  text-decoration: none; 
+  display: inline-block; 
+  border: none; 
+  transition: all 0.25s ease;
+}
+
+.btn-promo-white:hover { 
+  background-color: #fcd116 !important; 
+  color: #1a202c !important; 
+  transform: translateY(-2px); 
+}
+
+.btn-promo-emerald { 
+  background-color: #007a5e !important; 
+  color: #ffffff !important; 
+  padding: 11px 24px !important; 
+  font-size: 0.9rem !important; 
+  border-radius: 6px !important; 
+  font-weight: 700; 
+  text-decoration: none; 
+  display: inline-block; 
+  border: none; 
+  transition: all 0.25s ease;
+}
+
+.btn-promo-emerald:hover { 
+  background-color: #005642 !important; 
+  transform: translateY(-2px); 
+}
+
+.button-glow:hover { 
+  box-shadow: 0 0 15px rgba(252, 209, 22, 0.6); 
+}
+
+/* Background icon constraints to hide safely under mobile viewports */
+.promo-icon-bg { 
+  position: absolute; 
+  right: -15px; 
+  bottom: -20px; 
+  font-size: 9.5rem; 
+  color: rgba(255, 255, 255, 0.05); 
+  z-index: 1; 
+  pointer-events: none; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.float-animation { 
+  animation: subtleFloat 5s ease-in-out infinite; 
+}
+
+/* ==========================================================================
+   TARGETED MOBILE RESPONSIVE MEDIA PATCHES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .split-action-promotions-section { 
+    grid-template-columns: 1fr !important; 
+    padding: 0 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-action-promotions-section {
+    margin: 30px auto !important;
+    padding: 0 12px !important;
+    gap: 20px !important;
+  }
+
+  .promo-banner-card { 
+    padding: 30px 20px !important; 
+  }
+
+  /* Fixed mobile properties for safe block formatting bounds */
+  .promo-content-text {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .promo-content-text h2 { 
+    font-size: 1.35rem !important; 
+  }
+
+  .promo-content-text p { 
+    font-size: 0.88rem !important; 
+    margin-bottom: 20px !important;
+  }
+
+  /* Shrinks floating background icons on mobile screens so they don't break width boxes */
+  .promo-icon-bg {
+    font-size: 6rem !important;
+    right: 10px !important;
+    bottom: -10px !important;
+    opacity: 0.3 !important;
+  }
+  
+  .btn-promo-white, 
+  .btn-promo-emerald {
+    width: 100% !important; /* Full width conversion buttons look much cleaner on touch layouts */
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
