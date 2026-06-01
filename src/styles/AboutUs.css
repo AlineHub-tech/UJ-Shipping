@@ -1,0 +1,454 @@
+/* ==========================================================================
+   1. GLOBAL CANVAS STRUCTURAL ALIGNMENTS & PALETTE INTERACTIVE CONSTRAINTS
+   ========================================================================== */
+.about-view-wrapper {
+  width: 100%;
+  background-color: #f8fafc; /* Premium clean off-white contrast layout canvas */
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. LOGISTICS BANNER VISUAL ANCHOR (Hero Section Layout Framework)
+   ========================================================================== */
+.about-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-color: #1a202c;
+  background-image: url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+}
+
+.about-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 122, 94, 0.92) 20%, rgba(26, 32, 44, 0.6) 100%);
+  z-index: 1;
+}
+
+.about-banner-content-box {
+  position: relative;
+  z-index: 5;
+  color: #ffffff;
+  max-width: 650px;
+}
+
+.about-brand-tagline {
+  display: inline-block;
+  background-color: #fcd116; /* EAC yellow highlight accent token variables */
+  color: #1a202c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.about-banner-content-box h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.about-banner-content-box p {
+  font-size: 1.15rem;
+  color: #f7fafc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   3. DATA METRICS RUNTIME TRACKING DISPLAYS STRIP BAR CONTROLLER
+   ========================================================================== */
+.about-live-metrics-strip {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 35px 24px;
+  box-sizing: border-box;
+}
+
+.stats-strip-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  text-align: center;
+}
+
+.stat-metric-node h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #007a5e; /* Brand Theme emerald primary color signature */
+  margin: 0 0 4px 0;
+}
+
+.stat-metric-node p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+/* ==========================================================================
+   4. MISSION, VISION & REGIONAL IMPACT GRIDS STRATEGIC HOUSING
+   ========================================================================== */
+.strategic-pillars-section {
+  width: 100%;
+  padding: 60px 24px 40px 24px;
+  box-sizing: border-box;
+}
+
+.pillars-grid-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.pillar-statement-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease;
+}
+
+.pillar-statement-card:hover {
+  transform: translateY(-4px);
+}
+
+.pillar-icon-header {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.icon-blue { background-color: #e6f5ff; color: #00a1de; }
+.icon-yellow { background-color: #fffde6; color: #d4ae00; }
+.icon-green { background-color: #e6f7f2; color: #007a5e; }
+
+.pillar-statement-card h3 {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+}
+
+.pillar-statement-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. FOUNDER PROFILE MANAGEMENT CARDS GRID LAYOUT (Equal Sizing System)
+   ========================================================================== */
+.executive-leadership-team-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 60px 24px;
+  box-sizing: border-box;
+}
+
+.about-section-heading-box {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.heading-pre-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #007a5e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.about-section-heading-box h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+}
+
+.heading-decorative-underline {
+  width: 50px;
+  height: 4px;
+  background-color: #fcd116;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.heading-explainer-subtext {
+  font-size: 0.95rem;
+  color: #718096;
+  margin-top: 14px;
+}
+
+/* Enforces equal mid-scale dimensions on managers photos cards across screens */
+.leadership-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.executive-profile-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.executive-profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e0;
+}
+
+.executive-image-container {
+  width: 100%;
+  height: 290px; /* Standard non-stretching crop limit heights */
+  position: relative;
+  background-color: #edf2f7;
+  overflow: hidden;
+}
+
+.executive-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.executive-profile-card:hover .executive-photo {
+  transform: scale(1.03);
+}
+
+.executive-overlay-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(26, 32, 44, 0.3) 0%, transparent 100%);
+}
+
+.executive-metadata-box {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.executive-metadata-box h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2d3748;
+  margin: 0 0 4px 0;
+}
+
+.executive-title-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #007a5e;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.executive-metadata-box p {
+  margin: 0 0 20px 0;
+  font-size: 0.88rem;
+  color: #718096;
+  line-height: 1.55;
+  height: 4.8rem; /* Sets uniform container height bounds to maintain level alignments */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.executive-contact-mini-tag {
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-top: auto; /* Push contact details down to bottom line */
+}
+
+/* ==========================================================================
+   6. OPERATIONAL COMMITMENTS OVERVIEW (4 Pillars Layout Columns)
+   ========================================================================== */
+.commitments-showcase-matrix-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 70px 24px;
+  box-sizing: border-box;
+}
+
+.commitments-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.commitment-display-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 35px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.commitment-icon-frame {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #e6f7f2;
+  color: #007a5e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.commitment-display-card h3 { font-size: 1.15rem; font-weight: 700; color: #2d3748; margin: 0 0 10px 0; }
+.commitment-display-card p { margin: 0; font-size: 0.88rem; color: #718096; line-height: 1.6; }
+.commitment-display-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06); border-color: #cbd5e0; }
+
+.commitment-display-card.highlight-emerald-card { background-color: #007a5e; border-color: #007a5e; color: #ffffff; }
+.commitment-display-card.highlight-emerald-card .commitment-icon-frame { background-color: rgba(255, 255, 255, 0.15); color: #fcd116; }
+.commitment-display-card.highlight-emerald-card h3 { color: #ffffff; }
+.commitment-display-card.highlight-emerald-card p { color: #e2e8f0; }
+
+.pill-highlight-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #fcd116;
+  color: #1a202c;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   7. PROMOTIONAL ACTION CALL BASE (CTA Segment Panel Container)
+   ========================================================================== */
+.about-corporate-cta-banner-section {
+  max-width: 1400px;
+  margin: 20px auto 70px auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.cta-banner-card-box {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-radius: 12px;
+  padding: 50px 40px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.cta-banner-card-box h2 { font-size: 2rem; font-weight: 800; margin: 0 0 12px 0; }
+.cta-banner-card-box p { font-size: 1.05rem; color: #cbd5e0; max-width: 580px; margin: 0 auto 28px auto; line-height: 1.5; }
+
+.cta-banner-links-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-about-cta-yellow {
+  background-color: #fcd116 !important;
+  color: #1a202c !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-about-cta-yellow:hover {
+  background-color: #ffffff !important;
+  color: #007a5e !important;
+}
+
+.btn-about-cta-outline {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  text-decoration: none;
+}
+
+.btn-about-cta-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ==========================================================================
+   8. COMPREHENSIVE VIEWPORTS MOBILE ADAPTIVE OVERRIDES SYSTEM
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .leadership-cards-grid {
+    grid-template-columns: 1fr !important; /* Forces total full row stacking on touch system scales */
+  }
+
+  .executive-profile-card {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .executive-metadata-box p {
+    height: auto !important; /* Expand paragraph restrictions freely inside handheld mobile lines */
+    -webkit-line-clamp: unset !important;
+  }
+
+  .cta-banner-card-box {
+    padding: 35px 20px;
+  }
+
+  .cta-banner-card-box h2 {
+    font-size: 1.6rem;
+  }
+}

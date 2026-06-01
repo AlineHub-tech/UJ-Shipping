@@ -1,0 +1,374 @@
+/* ==========================================================================
+   NAVBAR DESIGN VARIABLES
+   ========================================================================== */
+:root {
+  --nav-green: #007A5E;
+  --nav-black: #111111;
+  --nav-white: #ffffff;
+  --nav-gray: #666666;
+  --nav-transition: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   PREVENT CONTENT OVERLAP SYSTEM
+   ========================================================================== */
+/* Bituma amapaji yose atangirira munsi ya Navbar neza nta kintu gihishwe */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.home-view-wrapper, 
+.shop-view-wrapper, 
+.about-view-wrapper, 
+.contact-view-wrapper {
+  padding-top: 85px !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+  .home-view-wrapper, 
+  .shop-view-wrapper {
+    padding-top: 75px !important;
+  }
+}
+
+/* ==========================================================================
+   MAIN HEADER (FULL WIDTH FLUSH)
+   ========================================================================== */
+.main-navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;                 /* Ifata screen yose burundu */
+  height: 85px;
+  background-color: var(--nav-white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  z-index: 99999;               /* Iguma hejuru y'ibintu byose */
+  box-sizing: border-box;
+  transition: all 0.4s var(--nav-transition);
+}
+
+/* Guhindura imiterere iyo umuntu arimo kumanuka (Scroll Style) */
+.main-navbar-header.navbar-scrolled {
+  height: 75px;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ULTRA-PRO LOGO IDENTITY
+   ========================================================================== */
+.navbar-brand-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo-graphics-sphere {
+  position: relative;
+  background-color: var(--nav-black);
+  color: var(--nav-white);
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s var(--nav-transition);
+}
+
+.vector-icon-ship {
+  z-index: 2;
+}
+
+/* Truck Overlay Badge */
+.vector-badge-truck {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--nav-green);
+  color: var(--nav-white);
+  font-size: 0.65rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--nav-white);
+  z-index: 3;
+}
+
+/* Pulse Glow Rings */
+.pulse-glow-effect {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  border: 2px solid var(--nav-green);
+  opacity: 0;
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+.navbar-brand-logo-container:hover .logo-graphics-sphere {
+  transform: translateY(-2px);
+}
+
+.navbar-brand-logo-container:hover .pulse-glow-effect {
+  opacity: 0.5;
+  transform: scale(1.15);
+}
+
+/* Typography Identity (Munsi y'izina neza) */
+.logo-typography-identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-main-title {
+  color: var(--nav-black);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.logo-subtitle-tagline {
+  color: var(--nav-green);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin: 2px 0 0 0;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   NAVIGATION DESKTOP LINK MENU
+   ========================================================================== */
+.nav-links-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--nav-black);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link-icon {
+  font-size: 0.9rem;
+  opacity: 0.4;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+/* Indicator line under nav item */
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--nav-green);
+  transition: width 0.3s var(--nav-transition);
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: var(--nav-green);
+}
+
+.nav-link-item:hover .nav-link-icon,
+.nav-link-item.active .nav-link-icon {
+  opacity: 1;
+  color: var(--nav-green);
+}
+
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   UTILITY ACTIONS (CART & LIVE STATUS)
+   ========================================================================== */
+.navbar-utility-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 122, 94, 0.05);
+  border: 1px solid rgba(0, 122, 94, 0.15);
+  color: var(--nav-green);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-globe-icon {
+  animation: spinGlobe 12s linear infinite;
+}
+
+@keyframes spinGlobe {
+  100% { transform: rotate(360deg); }
+}
+
+/* Shopping Cart */
+.utility-btn-cart {
+  color: var(--nav-black);
+  font-size: 1.25rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.utility-btn-cart:hover {
+  background-color: var(--nav-black);
+  color: var(--nav-white);
+}
+
+.cart-badge-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: var(--nav-green);
+  color: var(--nav-white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--nav-white);
+}
+
+/* ==========================================================================
+   MOBILE HAMBURGER SYSTEM
+   ========================================================================== */
+.mobile-menu-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100000;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--nav-black);
+  transition: all 0.3s var(--nav-transition);
+  transform-origin: left center;
+}
+
+.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(1) {
+  transform: rotate(45deg);
+  background-color: var(--nav-green);
+}
+
+.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(3) {
+  transform: rotate(-45deg);
+  background-color: var(--nav-green);
+}
+
+.desktop-only { display: flex; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN DRAWER (MOBILE VIEWPORT)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .desktop-only { display: none !important; }
+  .mobile-menu-hamburger { display: flex; }
+
+  .navbar-navigation-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--nav-white);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
+    padding: 100px 30px;
+    box-sizing: border-box;
+    transition: right 0.4s var(--nav-transition);
+    z-index: 9999;
+  }
+
+  .navbar-navigation-menu.mobile-open {
+    right: 0;
+  }
+
+  .nav-links-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .nav-link-item {
+    font-size: 1.05rem;
+    width: 100%;
+  }
+}

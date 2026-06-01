@@ -1,0 +1,352 @@
+/* --- Global View Canvas Structural Layouts --- */
+.contact-view-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* --- Hero Visual Section Cover Styling --- */
+.contact-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background-color: #2c3e50;
+  background-image: url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+}
+
+.contact-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 122, 94, 0.92) 20%, rgba(26, 32, 44, 0.6) 100%);
+  z-index: 1;
+}
+
+.contact-banner-text-box {
+  position: relative;
+  z-index: 5;
+  color: #ffffff;
+  max-width: 650px;
+}
+
+.contact-brand-pill {
+  display: inline-block;
+  background-color: #fcd116;
+  color: #1a202c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.contact-banner-text-box h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.contact-banner-text-box p {
+  font-size: 1.15rem;
+  color: #f7fafc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Primary Communication Section Layout Framework --- */
+.contact-communications-split-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 70px 24px;
+  box-sizing: border-box;
+}
+
+.contact-split-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.directory-pre-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #007a5e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.contact-directory-column-info h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.directory-explainer-text {
+  font-size: 1rem;
+  color: #718096;
+  line-height: 1.6;
+  margin: 0 0 35px 0;
+}
+
+/* Directory Stack Element Cards styling */
+.directory-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.directory-item-card-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.directory-card-icon-bubble {
+  width: 48px;
+  height: 48px;
+  background-color: #007a5e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.directory-card-text-block h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.phone-digit-highlight {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #007a5e;
+  margin: 0 0 4px 0;
+}
+
+.social-handle-tag {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #c13584; /* Instagram accent branding variable */
+  margin: 0 0 4px 0;
+}
+
+.directory-card-text-block span {
+  display: block;
+  font-size: 0.82rem;
+  color: #718096;
+  margin-top: 4px;
+}
+
+/* --- Right Column Input form Element Cards Block Styling --- */
+.contact-messaging-form-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.messaging-form-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #2d3748;
+}
+
+.messaging-form-header p {
+  margin: 0 0 28px 0;
+  font-size: 0.92rem;
+  color: #718096;
+  line-height: 1.5;
+}
+
+.form-input-field-block {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-input-field-block label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-input-field-block input,
+.form-input-field-block textarea {
+  width: 100%;
+  background-color: #f7fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: #2d3748;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-input-field-block input:focus,
+.form-input-field-block textarea:focus {
+  border-color: #007a5e;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 94, 0.15);
+}
+
+.form-input-field-block textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.btn-form-messaging-submit {
+  width: 100%;
+  background-color: #007a5e !important;
+  color: #ffffff !important;
+  padding: 14px !important;
+  font-size: 1rem !important;
+  border-radius: 6px !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-form-messaging-submit:hover {
+  background-color: #005642 !important;
+}
+
+.plane-icon {
+  font-size: 0.9rem;
+}
+
+/* --- Corridor Map Representation Area --- */
+.cross-border-corridor-map-section {
+  max-width: 1400px;
+  margin: 0 auto 70px auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.map-text-header-box {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.map-text-header-box h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.map-text-header-box p {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0;
+}
+
+.mock-map-visual-placeholder {
+  width: 100%;
+  height: 350px;
+  background-color: #edf2f7;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  background-image: radial-gradient(#cbd5e0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.map-inner-tint-overlay {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.map-floating-pin {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e0;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #2d3748;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+}
+
+.map-pin-icon {
+  color: #007a5e;
+}
+
+.pin-dar { align-self: flex-start; border-left: 4px solid #007a5e; }
+.pin-border { border-left: 4px solid #fcd116; }
+.pin-kigali { align-self: flex-end; border-left: 4px solid #007a5e; }
+
+.map-corridor-connecting-line {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  border-top: 2px dashed #007a5e;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+  transform: rotate(15deg);
+}
+
+/* --- SYSTEM MICRO-RESPONSIVENESS ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+  .contact-split-grid-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-hero-banner { height: 300px; }
+  .contact-banner-text-box h1 { font-size: 1.9rem; }
+  .contact-messaging-form-wrapper { padding: 24px 20px; }
+  .map-floating-pin { font-size: 0.78rem; padding: 8px 12px; position: static; width: 100%; }
+  .map-inner-tint-overlay { gap: 16px; justify-content: center; align-items: stretch; padding: 20px; }
+  .map-corridor-connecting-line { display: none; }
+}

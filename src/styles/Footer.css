@@ -1,0 +1,410 @@
+/* ==========================================================================
+   GLOBAL DESIGN VARIABLES & RESET FOR FULL-WIDTH FEEL
+   ========================================================================== */
+:root {
+  --ft-black: #111111;
+  --ft-dark-gray: #1a1a1a;
+  --ft-green: #007A5E;
+  --ft-white: #ffffff;
+  --ft-text-muted: #aaaaaa;
+  --ft-transition: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Bihebuje: Bikuraho gap zose mu ruhande rw'umubiri wa page */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ==========================================================================
+   MAIN GLOBAL BRAND FOOTER
+   ========================================================================== */
+.global-brand-footer {
+  background-color: var(--ft-black);
+  color: var(--ft-white);
+  padding: 80px 0 0 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  border-top: 3px solid var(--ft-green);
+  
+  /* Bikuraho gap zose z'impande na bottom bikayigira full width */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: 0 !important;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.footer-top-grid-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5% 60px 5%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.3fr;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   COLUMN 1: BRAND LOGO & DESCRIPTION
+   ========================================================================== */
+.footer-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-sphere {
+  position: relative;
+  background-color: var(--ft-dark-gray);
+  color: var(--ft-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-vector-ship {
+  z-index: 2;
+}
+
+.footer-vector-truck {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--ft-green);
+  color: var(--ft-white);
+  font-size: 0.65rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ft-black);
+  z-index: 3;
+}
+
+.footer-logo-text h3 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.footer-logo-text p {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--ft-green);
+  margin: 2px 0 0 0;
+  letter-spacing: 1px;
+}
+
+.footer-brand-description {
+  color: var(--ft-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-social-matrix {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-matrix-link {
+  background-color: var(--ft-dark-gray);
+  color: var(--ft-white);
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s var(--ft-transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-matrix-link:hover {
+  background-color: var(--ft-green);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 122, 94, 0.3);
+}
+
+/* ==========================================================================
+   GENERAL BLOCK HEADINGS
+   ========================================================================== */
+.footer-block-heading {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 25px 0;
+  position: relative;
+  letter-spacing: -0.2px;
+}
+
+.footer-block-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--ft-green);
+}
+
+/* ==========================================================================
+   COLUMN 2: QUICK LINKS
+   ========================================================================== */
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links-list a {
+  color: var(--ft-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.link-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s var(--ft-transition);
+}
+
+.footer-links-list a:hover {
+  color: var(--ft-green);
+}
+
+.footer-links-list a:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   COLUMN 3: STATIONS & CONTACTS
+   ========================================================================== */
+.footer-contact-matrix {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-contact-matrix li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--ft-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact-icon-wrapper {
+  color: var(--ft-green);
+  font-size: 0.95rem;
+  margin-top: 2px;
+  display: flex;
+}
+
+.footer-contact-matrix strong {
+  color: var(--ft-white);
+}
+
+/* ==========================================================================
+   COLUMN 4: NEWSLETTER UPDATE
+   ========================================================================== */
+.newsletter-explainer {
+  color: var(--ft-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.newsletter-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-context-icon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+}
+
+.footer-newsletter-form input {
+  width: 100%;
+  background-color: var(--ft-dark-gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 14px 12px 42px;
+  border-radius: 6px;
+  color: var(--ft-white);
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.footer-newsletter-form input:focus {
+  border-color: var(--ft-green);
+}
+
+.footer-subscribe-btn {
+  background-color: var(--ft-green);
+  color: var(--ft-white);
+  border: none;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-subscribe-btn:hover {
+  background-color: var(--ft-white);
+  color: var(--ft-black);
+}
+
+/* ==========================================================================
+   BASE COPYRIGHT BAR (ULTRA FLUSH)
+   ========================================================================== */
+.footer-copyright-bar {
+  background-color: #0b0b0b;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 0;
+  width: 100%;
+  margin-bottom: 0 !important; /* Bikuriraho burundu akantu kose kaza munsi */
+  box-sizing: border-box;
+}
+
+.copyright-bar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.copyright-text {
+  color: #777777;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ByteFlow Developer Attribution */
+.developer-attribution-link {
+  text-decoration: none;
+}
+
+.developer-attribution-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--ft-dark-gray);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #888888;
+  transition: all 0.3s var(--ft-transition);
+}
+
+.dev-icon {
+  color: var(--ft-green);
+}
+
+.dev-brand-highlight {
+  color: var(--ft-white);
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.developer-attribution-link:hover .developer-attribution-pill {
+  background-color: var(--ft-green);
+  border-color: var(--ft-green);
+  color: var(--ft-white);
+}
+
+.developer-attribution-link:hover .dev-icon {
+  color: var(--ft-white);
+}
+
+/* Trust Badges */
+.copyright-trust-badges {
+  display: flex;
+  gap: 20px;
+}
+
+.copyright-trust-badges span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #777777;
+  font-weight: 600;
+}
+
+.badge-icon {
+  color: var(--ft-green);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .footer-top-grid-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top-grid-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-bottom: 40px;
+  }
+  .copyright-bar-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+}
