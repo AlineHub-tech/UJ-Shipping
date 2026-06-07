@@ -4,7 +4,7 @@
 :root {
   --ft-black: #111111;
   --ft-dark-gray: #1a1a1a;
-  --ft-green: #007A5E;
+  --ft-green: #2e7d32;
   --ft-white: #ffffff;
   --ft-text-muted: #aaaaaa;
   --ft-transition: cubic-bezier(0.16, 1, 0.3, 1);
@@ -65,14 +65,30 @@ html, body {
   position: relative;
   background-color: var(--ft-dark-gray);
   color: var(--ft-white);
-  width: 44px;
-  height: 44px;
-  border-radius: 6px;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  padding: 0 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo-mark {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.footer-logo-divider {
+  color: var(--ft-green);
+  margin: 0 3px;
+  line-height: 1;
+}
+
+.footer-logo-mark-j {
+  color: var(--ft-green);
 }
 
 .footer-vector-ship {

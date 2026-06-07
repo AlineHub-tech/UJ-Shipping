@@ -1,159 +1,285 @@
-.hero-slider-wrapper {
-  width: 100%;
-  height: 480px; /* Highly optimized balanced height grid constraints */
+﻿/* ==========================================================================
+   MASTER HERO SLIDER SETUP (PERFECT FITTING SYSTEM)
+   ========================================================================== */
+.uj-hero-slider {
   position: relative;
-  background-color: #1a202c;
-  border-radius: 12px;
+  width: 100%;
+  height: 80vh; /* Expanded height to give tall portrait images breathing room */
+  min-height: 520px;
+  max-height: 700px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  background-color: #2c2c2c46; /* Solid jet black frames your designs beautifully */
+  margin: 0; 
+  margin-top: 5%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hero-slide-node {
+/* ================= INDIVIDUAL SLIDE CONTAINER ================= */
+.uj-slide-item {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 0 50px;
-  box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+  display: flex;
+  align-items: center; /* Center text content block vertically on desktop */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.uj-slide-item.uj-slide-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================================
+   CRITICAL IMAGE FIX: NO ZOOM, NO HEAD CROPPING, CENTER-TOP ALIGNED
+   ========================================================================== */
+.uj-slide-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important; /* Keeps the full fashion image intact */
+  /* 
+    CRITICAL LAYER REPAIR: 'center top' forces the image layout to shift down 
+    and anchor from the top edge, ensuring heads and shoulders are 100% visible!
+  */
+  object-position: center top !important; 
   z-index: 1;
 }
 
-.hero-slide-node.slide-node-active {
-  opacity: 1;
-  visibility: visible;
+/* Professional high contrast text overlay mapping layer */
+.uj-slide-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Gradient blend secures perfect text reading contrast over product assets */
+  background: linear-gradient(to top, rgba(17, 17, 17, 0.95) 45%, rgba(17, 17, 17, 0.2) 100%);
   z-index: 2;
 }
 
-.slide-inner-content {
-  max-width: 600px;
+/* ================= SLIDE CONTENT TEXT STRIP ================= */
+.uj-slide-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   color: #ffffff;
+  padding: 0 40px; 
+  box-sizing: border-box;
+  z-index: 5;
+  position: relative;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75); /* Extra drop shadow contrast */
 }
 
-.slide-badge-pill {
+.uj-slide-badge {
   display: inline-block;
-  background-color: #fcd116; /* EAC yellow highlight accent token */
-  color: #1a202c;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 5px 12px;
+  background-color: #2e7d32; /* Premium Emerald Green */
+  color: #ffffff;
+  padding: 8px 16px;
   border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
-.slide-main-title {
-  font-size: 2.6rem;
+.uj-slide-title {
+  font-size: 3.2rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.5px;
+  max-width: 750px;
+  margin: 0 0 16px 0;
+  line-height: 1.15;
 }
 
-.slide-main-desc {
+.uj-slide-desc {
   font-size: 1.1rem;
-  color: #e2e8f0;
-  line-height: 1.5;
-  margin: 0 0 28px 0;
+  max-width: 600px;
+  line-height: 1.55;
+  color: #f1f5f9;
+  margin: 0 0 30px 0;
 }
 
-.slide-buttons-row {
+.uj-slide-actions {
   display: flex;
+  gap: 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ================= CALL TO ACTION BUTTONS ================= */
+.uj-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-}
-
-.icon-gap {
-  margin-left: 6px;
-  vertical-align: middle;
-}
-
-.btn-slide-white {
-  background-color: #ffffff !important;
-  color: #007a5e !important;
+  justify-content: center;
+  padding: 13px 30px;
   font-weight: 700;
-  padding: 12px 24px !important;
-  border-radius: 6px !important;
-}
-.btn-slide-white:hover {
-  background-color: #fcd116 !important;
-  color: #1a202c !important;
-}
-
-.btn-slide-outline {
-  background-color: transparent !important;
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
-  padding: 10px 22px !important;
-  border-radius: 6px !important;
-  font-weight: 600;
-}
-.btn-slide-outline:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  font-size: 0.92rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
-/* Arrow controls styling */
-.slider-arrow-btn {
+.uj-btn-green {
+  background-color: #2e7d32;
+  color: #ffffff;
+  border: 2px solid #2e7d32;
+}
+
+.uj-btn-green:hover {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+}
+
+.uj-btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.uj-btn-outline:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.uj-icon-gap { margin-left: 8px; }
+
+/* ================= MANUAL NAVIGATION ARROWS ================= */
+.uj-slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(17, 17, 17, 0.6);
   color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: 10;
   transition: all 0.2s ease;
 }
-.slider-arrow-btn:hover { background-color: #007a5e; border-color: #007a5e; }
-.arrow-left { left: 15px; }
-.arrow-right { right: 15px; }
 
-/* Dot Progress Tracking Indicators */
-.slider-capsule-indicators {
+.uj-slider-arrow:hover {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+}
+
+.arrow-left { left: 25px; }
+.arrow-right { right: 25px; }
+
+.uj-slider-dots {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 10px;
   z-index: 10;
 }
 
-.indicator-dot {
-  width: 8px;
-  height: 8px;
+.uj-dot {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.35);
   cursor: pointer;
-  transition: all 0.25s ease;
-}
-.indicator-dot.dot-active {
-  background-color: #fcd116;
-  width: 22px;
-  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-/* Tablet & Mobile System Constraints */
-@media (max-width: 768px) {
-  .hero-slider-wrapper { height: 420px; }
-  .hero-slide-node { padding: 0 20px; text-align: center; }
-  .slide-buttons-row { justify-content: center; }
-  .slide-main-title { font-size: 1.85rem; }
-  .slide-main-desc { font-size: 0.95rem; }
-  .slider-arrow-btn { display: none; } /* Hide raw arrow controls on mobile screens touch lanes */
+.uj-dot.uj-dot-active {
+  background-color: #2e7d32;
+  width: 30px;
+  border-radius: 10px;
+}
+
+/* ================= TABLET RESPONSIVE ENGINE (max-width: 992px) ================= */
+@media (max-width: 992px) {
+  .uj-hero-slider { height: 60vh; min-height: 440px; }
+  .uj-slide-title { font-size: 2.4rem; }
+  .uj-slider-arrow { display: none !important; } 
+}
+
+/* ================= PRECISE MOBILE VIEW SYSTEM (ZERO PICTURE OVERFLOW) ================= */
+@media (max-width: 576px) {
+  .uj-hero-slider { 
+    width: 100%; 
+     margin-top: 18%;
+    height: 75vh; /* Safe portrait height proportion */
+    min-height: 500px;
+    max-height: 600px;
+  }
+
+  .uj-slide-item {
+    /* Lower content profile baseline grids to give maximum upper space exposure */
+    align-items: flex-end; 
+  }
+
+  .uj-slide-bg-img {
+    /* Forces the image layout down to show the head element context clearly */
+    object-position: center top !important; 
+  }
+
+  .uj-slide-image-overlay {
+    /* Deep bottom overlay covers textual frames safely */
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.98) 55%, rgba(17, 17, 17, 0.2) 100%);
+  }
+
+  .uj-slide-content {
+    width: 100%;
+    padding: 20px 20px 50px 20px; /* Safe padding prevents clipping with indicators */
+    margin: 0;
+  }
+
+  .uj-slide-badge { 
+    font-size: 0.72rem; 
+    padding: 5px 12px;
+    margin-bottom: 8px;
+  }
+
+  .uj-slide-title { 
+    font-size: 1.55rem; 
+    margin-bottom: 8px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .uj-slide-desc { 
+    font-size: 0.85rem; 
+    margin-bottom: 20px;
+    line-height: 1.45;
+  }
+
+  .uj-slide-actions { 
+    flex-direction: column; 
+    gap: 8px; 
+    width: 100%;
+  }
+
+  .uj-btn { 
+    padding: 12px 20px; 
+    font-size: 0.88rem; 
+    width: 100% !important; 
+    max-width: 100%;
+  }
+
+  .uj-slider-dots {
+    bottom: 12px; 
+  }
 }

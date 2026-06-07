@@ -1,374 +1,461 @@
-/* ==========================================================================
-   NAVBAR DESIGN VARIABLES
-   ========================================================================== */
+/* ================= GLOBAL VARIABLES & RESET ================= */
 :root {
-  --nav-green: #007A5E;
-  --nav-black: #111111;
-  --nav-white: #ffffff;
-  --nav-gray: #666666;
-  --nav-transition: cubic-bezier(0.16, 1, 0.3, 1);
+  --primary-green: #2e7d32;
+  --primary-black: #111111;
+  --light-gray: #f8f9fa;
+  --white: #ffffff;
+  --text-gray: #555555;
+  --transition-fast: all 0.3s ease;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --navbar-height: 73px;
 }
 
-/* ==========================================================================
-   PREVENT CONTENT OVERLAP SYSTEM
-   ========================================================================== */
-/* Bituma amapaji yose atangirira munsi ya Navbar neza nta kintu gihishwe */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden;
-  width: 100%;
-}
-
-.home-view-wrapper, 
-.shop-view-wrapper, 
-.about-view-wrapper, 
-.contact-view-wrapper {
-  padding-top: 85px !important;
-  box-sizing: border-box;
-}
-
-@media (max-width: 992px) {
-  .home-view-wrapper, 
-  .shop-view-wrapper {
-    padding-top: 75px !important;
-  }
-}
-
-/* ==========================================================================
-   MAIN HEADER (FULL WIDTH FLUSH)
-   ========================================================================== */
-.main-navbar-header {
+/* ================= NAVBAR HEADER CONTAINER ================= */
+.uj-navbar-header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;                 /* Ifata screen yose burundu */
-  height: 85px;
-  background-color: var(--nav-white);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  display: flex;
-  align-items: center;
-  z-index: 99999;               /* Iguma hejuru y'ibintu byose */
-  box-sizing: border-box;
-  transition: all 0.4s var(--nav-transition);
-}
-
-/* Guhindura imiterere iyo umuntu arimo kumanuka (Scroll Style) */
-.main-navbar-header.navbar-scrolled {
-  height: 75px;
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.navbar-container {
   width: 100%;
-  max-width: 1400px;
+  z-index: 1000;
+  background-color: var(--white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition-fast);
+  padding: 12px 0;
+  min-height: var(--navbar-height);
+}
+
+.uj-navbar-header.navbar-scrolled {
+  padding: 8px 0;
+  box-shadow: var(--shadow-sm);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.uj-navbar-container {
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
+  padding: 0 16px;
+  gap: 20px;
 }
 
-/* ==========================================================================
-   ULTRA-PRO LOGO IDENTITY
-   ========================================================================== */
-.navbar-brand-logo-container {
+/* ================= PROFESSIONAL LOGO DESIGN ================= */
+.uj-navbar-brand {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  cursor: pointer;
 }
 
-.logo-graphics-sphere {
-  position: relative;
-  background-color: var(--nav-black);
-  color: var(--nav-white);
-  width: 46px;
-  height: 46px;
-  border-radius: 8px;
+.uj-logo-icon {
+  background-color: var(--primary-black);
+  color: var(--white);
+  font-weight: 900;
+  font-size: 1rem;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s var(--nav-transition);
+  border-radius: 14px;
+  border-bottom: 3px solid var(--primary-green);
+  letter-spacing: -1px;
+  gap: 3px;
 }
 
-.vector-icon-ship {
-  z-index: 2;
+.logo-letter-u,
+.logo-letter-j {
+  font-size: 1rem;
+  line-height: 1;
 }
 
-/* Truck Overlay Badge */
-.vector-badge-truck {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background-color: var(--nav-green);
-  color: var(--nav-white);
-  font-size: 0.65rem;
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid var(--nav-white);
-  z-index: 3;
+.logo-ampersand {
+  color: var(--primary-green);
+  margin: 0 0;
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
-/* Pulse Glow Rings */
-.pulse-glow-effect {
-  position: absolute;
-  inset: 0;
-  border-radius: 8px;
-  border: 2px solid var(--nav-green);
-  opacity: 0;
-  transform: scale(1);
-  transition: all 0.5s ease;
-}
-
-.navbar-brand-logo-container:hover .logo-graphics-sphere {
-  transform: translateY(-2px);
-}
-
-.navbar-brand-logo-container:hover .pulse-glow-effect {
-  opacity: 0.5;
-  transform: scale(1.15);
-}
-
-/* Typography Identity (Munsi y'izina neza) */
-.logo-typography-identity {
+.uj-brand-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.logo-main-title {
-  color: var(--nav-black);
-  font-size: 1.6rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-  margin: 0;
-}
-
-.logo-subtitle-tagline {
-  color: var(--nav-green);
-  font-size: 0.62rem;
+.uj-logo-title {
+  font-size: 1.3rem;
   font-weight: 800;
-  letter-spacing: 1.2px;
-  margin: 2px 0 0 0;
+  color: var(--primary-black);
+  margin: 0;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
-/* ==========================================================================
-   NAVIGATION DESKTOP LINK MENU
-   ========================================================================== */
-.nav-links-list {
+.uj-logo-title .title-highlight {
+  color: var(--primary-green);
+}
+
+.uj-logo-tagline {
+  font-size: 0.7rem;
+  color: var(--text-gray);
+  margin: 2px 0 0 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================= DESKTOP NAVIGATION LINKS ================= */
+.uj-navbar-menu {
   display: flex;
   align-items: center;
-  gap: 30px;
+}
+
+.uj-nav-links {
+  display: flex;
   list-style: none;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
-.nav-link-item {
+.uj-nav-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--nav-black);
   text-decoration: none;
+  color: var(--primary-black);
+  font-weight: 600;
   font-size: 0.95rem;
-  font-weight: 700;
-  padding: 8px 0;
+  padding: 8px 4px;
   position: relative;
-  transition: color 0.3s;
+  transition: var(--transition-fast);
 }
 
-.nav-link-icon {
-  font-size: 0.9rem;
-  opacity: 0.4;
-  transition: opacity 0.3s, color 0.3s;
+.uj-nav-icon {
+  color: var(--text-gray);
+  transition: var(--transition-fast);
 }
 
-/* Indicator line under nav item */
-.nav-link-item::after {
+.uj-nav-item:hover, 
+.uj-nav-item.active {
+  color: var(--primary-green);
+}
+
+.uj-nav-item:hover .uj-nav-icon,
+.uj-nav-item.active .uj-nav-icon {
+  color: var(--primary-green);
+}
+
+/* Underline Animation effect */
+.uj-nav-item::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--nav-green);
-  transition: width 0.3s var(--nav-transition);
+  background-color: var(--primary-green);
+  transition: var(--transition-fast);
 }
 
-.nav-link-item:hover,
-.nav-link-item.active {
-  color: var(--nav-green);
-}
-
-.nav-link-item:hover .nav-link-icon,
-.nav-link-item.active .nav-link-icon {
-  opacity: 1;
-  color: var(--nav-green);
-}
-
-.nav-link-item:hover::after,
-.nav-link-item.active::after {
+.uj-nav-item:hover::after,
+.uj-nav-item.active::after {
   width: 100%;
 }
 
-/* ==========================================================================
-   UTILITY ACTIONS (CART & LIVE STATUS)
-   ========================================================================== */
-.navbar-utility-actions {
+/* ================= UTILITY ACTIONS (CART & BADGE) ================= */
+.uj-navbar-actions {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.navbar-status-pill {
+.uj-route-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background-color: rgba(0, 122, 94, 0.05);
-  border: 1px solid rgba(0, 122, 94, 0.15);
-  color: var(--nav-green);
-  padding: 6px 14px;
+  gap: 6px;
+  background-color: var(--light-gray);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 700;
+  color: var(--primary-black);
 }
 
-.status-globe-icon {
-  animation: spinGlobe 12s linear infinite;
+.uj-pin-icon {
+  color: var(--primary-green);
 }
 
-@keyframes spinGlobe {
-  100% { transform: rotate(360deg); }
-}
-
-/* Shopping Cart */
-.utility-btn-cart {
-  color: var(--nav-black);
-  font-size: 1.25rem;
+.uj-cart-btn {
   text-decoration: none;
+  color: var(--primary-black);
+  transition: var(--transition-fast);
+}
+
+.uj-cart-icon-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  border-radius: 50%;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 6px;
 }
 
-.cart-icon-wrapper {
-  position: relative;
-  display: flex;
-}
-
-.utility-btn-cart:hover {
-  background-color: var(--nav-black);
-  color: var(--nav-white);
-}
-
-.cart-badge-count {
+.uj-cart-badge {
   position: absolute;
-  top: -8px;
-  right: -10px;
-  background-color: var(--nav-green);
-  color: var(--nav-white);
+  top: -4px;
+  right: -4px;
+  background-color: var(--primary-green);
+  color: var(--white);
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 700;
   width: 18px;
   height: 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--nav-white);
 }
 
-/* ==========================================================================
-   MOBILE HAMBURGER SYSTEM
-   ========================================================================== */
-.mobile-menu-hamburger {
+.uj-mobile-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 16px;
+  background: transparent;
+  border: none;
+  color: var(--primary-black);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition-fast);
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ================= RESPONSIVE DESIGN BREAKPOINTS ================= */
+
+/* Devices max-width 992px (Tablets) */
+@media (max-width: 992px) {
+  .uj-nav-links {
+    gap: 15px;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Devices max-width 768px (Mobile & Small Tablets) */
+@media (max-width: 768px) {
+  .uj-mobile-toggle {
+    display: flex; /* Show menu toggle button as flex for alignment */
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Mobile menu sliding mechanism */
+  .uj-navbar-menu {
+    position: fixed;
+    top: var(--navbar-height); /* Right under the header */
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--white);
+    transition: all 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+  }
+
+  .uj-navbar-menu.mobile-open {
+    left: 0;
+  }
+
+  .uj-nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    gap: 0;
+  }
+
+  .uj-nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .uj-nav-item {
+    padding: 16px 0;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .uj-nav-item::after {
+    display: none; /* Remove hover lines on mobile */
+  }
+}
+/* ================= UTILITY ACTIONS (CART & BADGE) ================= */
+.uj-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.uj-route-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--light-gray);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-black);
+}
+
+.uj-pin-icon {
+  color: var(--primary-green);
+}
+
+.uj-cart-btn {
+  text-decoration: none;
+  color: var(--primary-black);
+  transition: var(--transition-fast);
+}
+
+.uj-cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.uj-cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--primary-green);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= CUSTOM ANIMATED HAMBURGER TOGGLE ================= */
+.uj-mobile-toggle {
+  display: none; /* Default hidden on desktop viewports */
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 100000;
+  padding: 12px;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  transition: var(--transition-fast);
+  z-index: 1001;
 }
 
+/* Hamburger bars base styling design matrix */
 .hamburger-bar {
-  width: 100%;
-  height: 2px;
-  background-color: var(--nav-black);
-  transition: all 0.3s var(--nav-transition);
-  transform-origin: left center;
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--primary-black);
+  border-radius: 4px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(1) {
-  transform: rotate(45deg);
-  background-color: var(--nav-green);
-}
+/* ================= RESPONSIVE DESIGN BREAKPOINTS ================= */
 
-.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(2) {
-  width: 0%;
-  opacity: 0;
-}
-
-.mobile-menu-hamburger.hamburger-active .hamburger-bar:nth-child(3) {
-  transform: rotate(-45deg);
-  background-color: var(--nav-green);
-}
-
-.desktop-only { display: flex; }
-
-/* ==========================================================================
-   RESPONSIVE DESIGN DRAWER (MOBILE VIEWPORT)
-   ========================================================================== */
+/* Devices max-width 992px (Tablets Scale Layer) */
 @media (max-width: 992px) {
-  .desktop-only { display: none !important; }
-  .mobile-menu-hamburger { display: flex; }
+  .uj-nav-links {
+    gap: 15px;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+}
 
-  .navbar-navigation-menu {
+/* Devices max-width 768px (Smartphones & Portrait Small Tablets) */
+@media (max-width: 768px) {
+  .uj-mobile-toggle {
+    display: flex; /* Show menu animated hamburger toggle button cleanly */
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* 
+    HAMBURGER TRANSFORMATION INTO "X" ACTIVE STATE ARRAYS 
+    (When menu is clicked open, classes mutate dynamically via React toggles)
+  */
+  .mobile-open-active .hamburger-bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+    background-color: var(--primary-green); /* Turns color green on activation */
+  }
+
+  .mobile-open-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  .mobile-open-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+    background-color: var(--primary-green);
+  }
+
+  /* Mobile slide-out overlay panel mechanism blueprint */
+  .uj-navbar-menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background-color: var(--nav-white);
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
-    padding: 100px 30px;
-    box-sizing: border-box;
-    transition: right 0.4s var(--nav-transition);
-    z-index: 9999;
-  }
-
-  .navbar-navigation-menu.mobile-open {
-    right: 0;
-  }
-
-  .nav-links-list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 22px;
-  }
-
-  .nav-link-item {
-    font-size: 1.05rem;
+    top: var(--navbar-height); 
+    left: -100%; /* Default locked offscreen */
     width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--white);
+    transition: left 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+  }
+
+  /* Reveals the vertical slider pane template row drops */
+  .uj-navbar-menu.mobile-open {
+    left: 0;
+  }
+
+  .uj-nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    gap: 0;
+  }
+
+  .uj-nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .uj-nav-item {
+    padding: 16px 0;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .uj-nav-item::after {
+    display: none; /* Clears baseline hover underlines layout links on phones */
   }
 }

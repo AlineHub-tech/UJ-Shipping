@@ -1,454 +1,412 @@
 /* ==========================================================================
-   1. GLOBAL CANVAS STRUCTURAL ALIGNMENTS & PALETTE INTERACTIVE CONSTRAINTS
+   1. GLOBAL RESET PROTECTION & HERO SECTION
    ========================================================================== */
-.about-view-wrapper {
+.uj-about-view {
   width: 100%;
-  background-color: #f8fafc; /* Premium clean off-white contrast layout canvas */
+  max-width: 100vw;
   overflow-x: hidden;
-}
-
-/* ==========================================================================
-   2. LOGISTICS BANNER VISUAL ANCHOR (Hero Section Layout Framework)
-   ========================================================================== */
-.about-hero-banner {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  background-color: #1a202c;
-  background-image: url('https://unsplash.com');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 0 8%;
+  background-color: #ffffff; /* Fresh clean white background as requested */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-top: 73px; /* Safe space directly under the navbar link bar */
   box-sizing: border-box;
 }
 
-.about-banner-overlay {
+.uj-about-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.uj-about-hero-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 122, 94, 0.92) 20%, rgba(26, 32, 44, 0.6) 100%);
+  object-fit: cover;
+  object-position: center center;
   z-index: 1;
 }
 
-.about-banner-content-box {
+.uj-about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85));
+  z-index: 2;
+}
+
+.uj-about-hero-content {
   position: relative;
   z-index: 5;
+  text-align: center;
   color: #ffffff;
-  max-width: 650px;
+  width: 90%;
+  max-width: 800px;
 }
 
-.about-brand-tagline {
-  display: inline-block;
-  background-color: #fcd116; /* EAC yellow highlight accent token variables */
-  color: #1a202c;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 5px 12px;
+.uj-about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #2e7d32; /* Primary Brand Green */
+  color: #ffffff;
+  padding: 6px 12px;
   border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
-.about-banner-content-box h1 {
-  font-size: 2.6rem;
+.uj-about-hero-content h1 {
+  font-size: 2.2rem;
   font-weight: 800;
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
   letter-spacing: -0.5px;
-  line-height: 1.2;
 }
 
-.about-banner-content-box p {
-  font-size: 1.15rem;
-  color: #f7fafc;
+.uj-about-hero-content p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
   line-height: 1.5;
   margin: 0;
 }
 
 /* ==========================================================================
-   3. DATA METRICS RUNTIME TRACKING DISPLAYS STRIP BAR CONTROLLER
+   2. CORE EXPLANATION SECTION (WHAT WE DO SPLIT LAYOUT)
    ========================================================================== */
-.about-live-metrics-strip {
+.uj-about-container {
   width: 100%;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 35px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
   box-sizing: border-box;
 }
 
-.stats-strip-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  text-align: center;
+.uj-about-core-section {
+  width: 100%;
+  padding: 60px 0;
+  box-sizing: border-box;
 }
 
-.stat-metric-node h2 {
-  font-size: 2.6rem;
+.uj-about-split-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first stack */
+  gap: 40px;
+  align-items: center;
+}
+
+.uj-about-pre-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2e7d32;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.uj-about-text-column h2 {
+  font-size: 1.7rem;
   font-weight: 800;
-  color: #007a5e; /* Brand Theme emerald primary color signature */
+  color: #111111;
+  margin: 0 0 14px 0;
+  line-height: 1.25;
+}
+
+.uj-about-line {
+  width: 45px;
+  height: 3px;
+  background-color: #2e7d32;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.uj-about-main-paragraph {
+  font-size: 1rem;
+  color: #222222;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.uj-about-sub-paragraph {
+  font-size: 0.9rem;
+  color: #555555;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* MINI FEATURES MATRIX LINK BLOCK */
+.uj-about-mini-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.uj-mini-feature-node {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.uj-mini-icon {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.uj-mini-txt h4 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #111111;
   margin: 0 0 4px 0;
 }
 
-.stat-metric-node p {
+.uj-mini-txt p {
+  font-size: 0.85rem;
+  color: #666666;
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #718096;
+  line-height: 1.4;
 }
 
-/* ==========================================================================
-   4. MISSION, VISION & REGIONAL IMPACT GRIDS STRATEGIC HOUSING
-   ========================================================================== */
-.strategic-pillars-section {
+/* SIDE IMAGE FRAME OVERLAY CONTAINER */
+.uj-about-image-column {
   width: 100%;
-  padding: 60px 24px 40px 24px;
-  box-sizing: border-box;
 }
 
-.pillars-grid-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+.uj-about-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.pillar-statement-card {
-  background-color: #ffffff;
+.uj-about-side-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uj-about-floating-card-metric {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #111111; /* Solid premium black background */
+  color: #ffffff;
+  padding: 14px 20px;
   border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  border: 1px solid #e2e8f0;
-  transition: transform 0.3s ease;
+  border-left: 4px solid #2e7d32; /* Green brand focus line */
 }
 
-.pillar-statement-card:hover {
-  transform: translateY(-4px);
-}
-
-.pillar-icon-header {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.25rem;
-  margin-bottom: 20px;
-}
-
-.icon-blue { background-color: #e6f5ff; color: #00a1de; }
-.icon-yellow { background-color: #fffde6; color: #d4ae00; }
-.icon-green { background-color: #e6f7f2; color: #007a5e; }
-
-.pillar-statement-card h3 {
-  font-size: 1.25rem;
-  color: #2c3e50;
-  margin: 0 0 12px 0;
-  font-weight: 700;
-}
-
-.pillar-statement-card p {
+.uj-about-floating-card-metric h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
   margin: 0;
-  font-size: 0.9rem;
-  color: #718096;
-  line-height: 1.6;
+  line-height: 1;
+}
+
+.uj-about-floating-card-metric span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
-   5. FOUNDER PROFILE MANAGEMENT CARDS GRID LAYOUT (Equal Sizing System)
+   3. TARGET CLIENTS STRIP (.uj-about-target-vision-strip)
    ========================================================================== */
-.executive-leadership-team-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 24px 60px 24px;
+.uj-about-target-vision-strip {
+  width: 100%;
+  background-color: #fafafa; /* Soft neutral backdrop */
+  padding: 60px 0;
   box-sizing: border-box;
 }
 
-.about-section-heading-box {
+/* Universal Header Blocks Helpers */
+.uj-center-header-block {
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 40px;
 }
 
-.heading-pre-tag {
+.uj-badge-pill-header {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  gap: 6px;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #007a5e;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 6px 12px;
+  border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 6px;
 }
 
-.about-section-heading-box h2 {
-  font-size: 2rem;
+.uj-section-main-title {
+  font-size: 1.6rem;
   font-weight: 800;
-  color: #2c3e50;
-  margin: 0 0 10px 0;
+  color: #111111;
+  margin: 10px 0;
 }
 
-.heading-decorative-underline {
-  width: 50px;
-  height: 4px;
-  background-color: #fcd116;
+.uj-decorative-bar-line {
+  width: 45px;
+  height: 3px;
+  background-color: #2e7d32;
   margin: 0 auto;
   border-radius: 2px;
 }
 
-.heading-explainer-subtext {
-  font-size: 0.95rem;
-  color: #718096;
-  margin-top: 14px;
-}
-
-/* Enforces equal mid-scale dimensions on managers photos cards across screens */
-.leadership-cards-grid {
+.uj-target-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-}
-
-.executive-profile-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.executive-profile-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
-  border-color: #cbd5e0;
-}
-
-.executive-image-container {
-  width: 100%;
-  height: 290px; /* Standard non-stretching crop limit heights */
-  position: relative;
-  background-color: #edf2f7;
-  overflow: hidden;
-}
-
-.executive-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.executive-profile-card:hover .executive-photo {
-  transform: scale(1.03);
-}
-
-.executive-overlay-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(26, 32, 44, 0.3) 0%, transparent 100%);
-}
-
-.executive-metadata-box {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.executive-metadata-box h4 {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #2d3748;
-  margin: 0 0 4px 0;
-}
-
-.executive-title-tag {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #007a5e;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.executive-metadata-box p {
-  margin: 0 0 20px 0;
-  font-size: 0.88rem;
-  color: #718096;
-  line-height: 1.55;
-  height: 4.8rem; /* Sets uniform container height bounds to maintain level alignments */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-.executive-contact-mini-tag {
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-top: auto; /* Push contact details down to bottom line */
-}
-
-/* ==========================================================================
-   6. OPERATIONAL COMMITMENTS OVERVIEW (4 Pillars Layout Columns)
-   ========================================================================== */
-.commitments-showcase-matrix-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 24px 70px 24px;
-  box-sizing: border-box;
-}
-
-.commitments-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr; /* Mobile view: 1 Column stack */
   gap: 25px;
 }
 
-.commitment-display-card {
+.uj-target-card-box {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 35px 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.commitment-icon-frame {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  background-color: #e6f7f2;
-  color: #007a5e;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+  text-align: center;
 }
 
-.commitment-display-card h3 { font-size: 1.15rem; font-weight: 700; color: #2d3748; margin: 0 0 10px 0; }
-.commitment-display-card p { margin: 0; font-size: 0.88rem; color: #718096; line-height: 1.6; }
-.commitment-display-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06); border-color: #cbd5e0; }
+.uj-target-icon-sphere {
+  background-color: #111111;
+  color: #ffffff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 2px solid #2e7d32;
+}
 
-.commitment-display-card.highlight-emerald-card { background-color: #007a5e; border-color: #007a5e; color: #ffffff; }
-.commitment-display-card.highlight-emerald-card .commitment-icon-frame { background-color: rgba(255, 255, 255, 0.15); color: #fcd116; }
-.commitment-display-card.highlight-emerald-card h3 { color: #ffffff; }
-.commitment-display-card.highlight-emerald-card p { color: #e2e8f0; }
-
-.pill-highlight-label {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #fcd116;
-  color: #1a202c;
-  font-size: 0.7rem;
+.uj-target-card-box h3 {
+  font-size: 1.2rem;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #111111;
+  margin: 0 0 10px 0;
+}
+
+.uj-target-card-box p {
+  font-size: 0.88rem;
+  color: #555555;
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ==========================================================================
-   7. PROMOTIONAL ACTION CALL BASE (CTA Segment Panel Container)
+   4. CONVERTING LOWER ACTION CTA BANNER
    ========================================================================== */
-.about-corporate-cta-banner-section {
-  max-width: 1400px;
-  margin: 20px auto 70px auto;
-  padding: 0 24px;
+.uj-about-cta-banner {
+  width: 100%;
+  background-color: #f4fbf4; /* Light clean green accent tint tint */
+  border-top: 1px solid #e2f0e2;
+  padding: 60px 15px;
+  text-align: center;
   box-sizing: border-box;
 }
 
-.cta-banner-card-box {
-  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-  border-radius: 12px;
-  padding: 50px 40px;
-  text-align: center;
-  color: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+.uj-about-cta-inner h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
 }
 
-.cta-banner-card-box h2 { font-size: 2rem; font-weight: 800; margin: 0 0 12px 0; }
-.cta-banner-card-box p { font-size: 1.05rem; color: #cbd5e0; max-width: 580px; margin: 0 auto 28px auto; line-height: 1.5; }
+.uj-about-cta-inner p {
+  font-size: 0.92rem;
+  color: #555555;
+  max-width: 600px;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
 
-.cta-banner-links-row {
-  display: flex;
+.uj-about-primary-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-about-cta-yellow {
-  background-color: #fcd116 !important;
-  color: #1a202c !important;
+  gap: 10px;
+  background-color: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
   font-weight: 700;
-  text-decoration: none;
+  font-size: 0.95rem;
+  width: 100%; /* Full width mobile size prevents line clips */
+  transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
-.btn-about-cta-yellow:hover {
-  background-color: #ffffff !important;
-  color: #007a5e !important;
-}
-
-.btn-about-cta-outline {
-  background-color: transparent !important;
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
-  text-decoration: none;
-}
-
-.btn-about-cta-outline:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+.uj-about-primary-btn:hover {
+  background-color: #2e7d32;
 }
 
 /* ==========================================================================
-   8. COMPREHENSIVE VIEWPORTS MOBILE ADAPTIVE OVERRIDES SYSTEM
+   5. PROFESSIONAL MEDIA BREAKPOINTS (TABLET & DESKTOP ALIGNMENTS)
    ========================================================================== */
 
-@media (max-width: 768px) {
-  .leadership-cards-grid {
-    grid-template-columns: 1fr !important; /* Forces total full row stacking on touch system scales */
+/* A. Tablets Screens Layer Viewports (min-width: 650px display frames) */
+@media screen and (min-width: 650px) {
+  .uj-about-hero-banner { height: 300px; }
+  .uj-about-hero-content h1 { font-size: 2.8rem; }
+  .uj-about-text-column h2 { font-size: 2.1rem; }
+  .uj-section-main-title { font-size: 2rem; }
+  .uj-about-cta-inner h2 { font-size: 1.9rem; }
+
+  .uj-target-cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* Splits into 2 cards columns */
+    gap: 24px;
   }
 
-  .executive-profile-card {
-    max-width: 320px;
-    margin: 0 auto;
-    width: 100%;
+  .uj-about-primary-btn {
+    width: auto; /* Button scales back to original sizes */
+  }
+}
+
+/* B. Pro High-End Monitors Desktop Layer Viewports (min-width: 1024px monitors) */
+@media screen and (min-width: 1024px) {
+  .uj-about-core-section, .uj-about-target-vision-strip {
+    padding: 90px 0;
   }
 
-  .executive-metadata-box p {
-    height: auto !important; /* Expand paragraph restrictions freely inside handheld mobile lines */
-    -webkit-line-clamp: unset !important;
+  .uj-about-split-grid {
+    grid-template-columns: 55% 45%; /* Precise layout proportions */
+    gap: 50px;
   }
 
-  .cta-banner-card-box {
-    padding: 35px 20px;
+  .uj-about-img-wrapper {
+    height: 440px; /* Enhanced height size frame for big desktop viewports */
   }
 
-  .cta-banner-card-box h2 {
-    font-size: 1.6rem;
+  .uj-about-container {
+    width: 90%;
   }
 }
