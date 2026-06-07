@@ -14,7 +14,7 @@ import {
 import HeroSlider from '../components/HeroSlide';
 import '../styles/Home.css';
 
-import Image1 from '../assets/23.JPEG';
+import Image1 from '../assets/23.jpeg';
 import Image2 from '../assets/4 (4).jpg';
 import Image3 from '../assets/22 (5).jpg';
 import Image4 from '../assets/2 (4).jpg';
