@@ -1,206 +1,127 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  FaGlobeAfrica, 
-  FaCertificate, 
-  FaShippingFast, 
-  FaHandHoldingUsd, 
-  FaHandshake, 
-  FaShieldAlt, 
-  FaEye, 
-  FaBullseye, 
-  FaChartLine, 
-  FaAward, 
-  FaUsers 
-} from 'react-icons/fa';
+  ShoppingBag, 
+  Sparkles, 
+  Target, 
+  CheckCircle, 
+  Shirt, 
+  Users, 
+  Compass 
+} from 'lucide-react';
 import '../styles/AboutUs.css';
 
-// Importing your specific local asset image for the founder
-import FounderImg from '../assets/j.jpeg';
+import AboutHeroImg from '../assets/23.jpeg';
+import VisionImg from '../assets/4 (4).jpg';
 
-const AboutUs = () => {
+const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className="about-view-wrapper">
+    <div className={`uj-about-view ${isVisible ? 'uj-page-active' : ''}`}>
       
-      {/* ================= HERO LOGISTICS OVERVIEW COVER ================= */}
-      <div className="about-hero-banner">
-        <div className="about-banner-overlay"></div>
-        <div className="about-banner-content-box">
-          <span className="about-brand-tagline">U & J Contact Terminal Group</span>
-          <h1>Cross-Border Commerce Specialists</h1>
-          <p>Connecting supply chains between Tanzanian port warehouses and premium Kigali boutique networks seamlessly.</p>
-        </div>
-      </div>
-
-      {/* ================= DATA STATS TRACKING DISPLAY STRIP ================= */}
-      <section className="about-live-metrics-strip">
-        <div className="stats-strip-container">
-          <div className="stat-metric-node">
-            <h2>30+</h2>
-            <p>Active Product Lots Dispatched</p>
-          </div>
-          <div className="stat-metric-node">
-            <h2>100%</h2>
-            <p>Kigali Delivery Free Commitment</p>
-          </div>
-          <div className="stat-metric-node">
-            <h2>24/7</h2>
-            <p>Border Clearing Agent Manifest Handling</p>
-          </div>
-          <div className="stat-metric-node">
-            <h2>500+</h2>
-            <p>Boutique Merchants Served Safely</p>
-          </div>
+      {/* ================= SECTION 1: HERO TEXT HEADER BANNER ================= */}
+      <section className="uj-about-hero-banner">
+        <img src={AboutHeroImg} alt="U & J Boutique Fashion Hub" className="uj-about-hero-bg" />
+        <div className="uj-about-hero-overlay"></div>
+        <div className="uj-about-hero-content">
+          <span className="uj-about-badge"><Sparkles size={14} /> Redefining Apparels</span>
+          <h1>About U & J Shop</h1>
+          <p>Connecting trendsetters from Muhanga to Kigali with premium boutique collections and zero delivery fees.</p>
         </div>
       </section>
 
-      {/* ================= STRATEGIC PILLARS GRID: MISSION & VISION ================= */}
-      <section className="strategic-pillars-section">
-        <div className="pillars-grid-container">
-          
-          <div className="pillar-statement-card">
-            <div className="pillar-icon-header icon-blue">
-              <FaBullseye />
-            </div>
-            <h3>Our Mission</h3>
-            <p>
-              To bridge the trading gap between Tanzanian commercial ports and Rwandan boutique retail markets by providing transparent, stress-free consolidated freight operations that empower small and medium enterprises.
-            </p>
-          </div>
+      {/* ================= SECTION 2: WHAT WE DO MATRIX ================= */}
+      <section className="uj-about-core-section">
+        <div className="uj-about-container">
+          <div className="uj-about-split-grid">
+            
+            <div className="uj-about-text-column">
+              <span className="uj-about-pre-title">Who We Are & What We Do</span>
+              <h2>Your Ultimate Destination For Premium Boutique Drops</h2>
+              <div className="uj-about-line"></div>
+              <p className="uj-about-main-paragraph">
+                At <strong>U & J Shop</strong>, we curate high-end commercial and luxury textiles designed to elevate your everyday look. We specialize in bringing you gorgeous <strong>Elegant Dresses</strong>, casual and urban <strong>Matching Sets</strong>, premium quality <strong>Valise Sweaters</strong>, and head-turning <strong>Designer Handbags</strong>.
+              </p>
+              <p className="uj-about-sub-paragraph">
+                We eliminated the stressful barriers of traditional shopping. Through our modern single-tap WhatsApp checkout pipeline, you can order your favorite fit instantly and enjoy guaranteed <strong>Free Door-to-Door Delivery</strong> straight from our operations base in Muhanga directly to your doorstep anywhere in Kigali.
+              </p>
 
-          <div className="pillar-statement-card">
-            <div className="pillar-icon-header icon-yellow">
-              <FaEye />
-            </div>
-            <h3>Our Vision</h3>
-            <p>
-              To serve as the benchmark multi-channel trading portal within the EAC central highway artery, heavily valued for zero-friction border customs compliance and guaranteed door-to-door retail safety.
-            </p>
-          </div>
-
-          <div className="pillar-statement-card">
-            <div className="pillar-icon-header icon-green">
-              <FaChartLine />
-            </div>
-            <h3>Our Regional Impact</h3>
-            <p>
-              By converting unstable freight intervals into automated, weekly predictable cargo schedules, we help local clothing stores secure high inventory turnover rates with minimized capital risk profiles.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ================= EXECUTIVE MANAGEMENT TEAM CARDS ================= */}
-      <section className="executive-leadership-team-section">
-        <div className="about-section-heading-box">
-          <span className="heading-pre-tag"><FaUsers /> Executive Leadership</span>
-          <h2>The Founders & Strategic Directors</h2>
-          <div className="heading-decorative-underline"></div>
-          <p className="heading-explainer-subtext">Meet the core administrators managing our cargo dispatch registries and customs networks daily.</p>
-        </div>
-
-        <div className="leadership-cards-grid">
-          
-          {/* Card 1: Managing Director / Founder Profile (Updated to use j.jpeg) */}
-          <div className="executive-profile-card">
-            <div className="executive-image-container">
-              <img 
-                src={FounderImg} 
-                alt="Jean de Dieu - Founder & Managing Director" 
-                className="executive-photo"
-                onError={(e) => { e.target.src = 'https://placeholder.com'; }}
-              />
-              <div className="executive-overlay-gradient"></div>
-            </div>
-            <div className="executive-metadata-box">
-              <h4>Jean de Dieu</h4>
-              <span className="executive-title-tag">Founder & Managing Director</span>
-              <p>Directly oversees centralized terminal operations at the Dar es Salaam port warehouse, cargo packing compliance, and highway fleet security.</p>
-              <div className="executive-contact-mini-tag">
-                <span>Instagram: jean.de.dieu80425</span>
+              <div className="uj-about-mini-features">
+                <div className="uj-mini-feature-node">
+                  <div className="uj-mini-icon"><Shirt size={18} /></div>
+                  <div className="uj-mini-txt">
+                    <h4>Boutique Condition Inspection</h4>
+                    <p>Every dress, tracksuit, and bag undergoes strict layout handling before packaging.</p>
+                  </div>
+                </div>
+                <div className="uj-mini-feature-node">
+                  <div className="uj-mini-icon"><CheckCircle size={18} /></div>
+                  <div className="uj-mini-txt">
+                    <h4>Guaranteed Safe Transit</h4>
+                    <p>No item compression. Your items arrive fresh, pristine, and ready to wear.</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Card 2: Operations & Customs Director Profile */}
-          <div className="executive-profile-card">
-            <div className="executive-image-container">
-              <img 
-                src="https://unsplash.com" 
-                alt="U & J Logistics Terminal Lead desk" 
-                className="executive-photo"
-              />
-              <div className="executive-overlay-gradient"></div>
-            </div>
-            <div className="executive-metadata-box">
-              <h4>Logistics Terminal Lead</h4>
-              <span className="executive-title-tag">EAC Customs Clearing Director</span>
-              <p>Manages transit declaration manifests at the Rusumo Border checkpoint and drives final freight sorting at the Nyabugogo terminal yards in Kigali.</p>
-              <div className="executive-contact-mini-tag">
-                <span>Hotline Support: +250 786 257 303</span>
+            <div className="uj-about-image-column">
+              <div className="uj-about-img-wrapper">
+                <img src={VisionImg} alt="U & J Shop Core Vision Outfit" className="uj-about-side-img" />
+                <div className="uj-about-floating-card-metric">
+                  <h3>100%</h3>
+                  <span>Verified Buyer Satisfaction</span>
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
 
-      {/* ================= CORE OPERATIONAL SERVICES PILLARS ================= */}
-      <section className="commitments-showcase-matrix-section">
-        <div className="about-section-heading-box">
-          <span className="heading-pre-tag"><FaAward /> Client Commitments</span>
-          <h2>The Four Pillars of Our Logistics Performance</h2>
-          <div className="heading-decorative-underline"></div>
-        </div>
-
-        <div className="commitments-cards-grid">
-          
-          <div className="commitment-display-card">
-            <div className="commitment-icon-frame">
-              <FaShippingFast />
-            </div>
-            <h3>Premium Corridor Speed</h3>
-            <p>Bypassing traditional third-party forwarding friction by operating a direct truck network down the Central Corridor artery for rapid cargo drop schedules.</p>
+      {/* ================= SECTION 3: TARGET CLIENTS & INTENTIONS ================= */}
+      <section className="uj-about-target-vision-strip">
+        <div className="uj-about-container">
+          <div className="uj-center-header-block">
+            <span className="uj-badge-pill-header"><Target size={14} /> Our Mission & Focus</span>
+            <h2 className="uj-section-main-title">Our Target Audience & Core Vision</h2>
+            <div className="uj-decorative-bar-line"></div>
           </div>
 
-          <div className="commitment-display-card highlight-emerald-card">
-            <div className="commitment-icon-frame">
-              <FaHandHoldingUsd />
+          <div className="uj-target-cards-grid">
+            
+            <div className="uj-target-card-box">
+              <div className="uj-target-icon-sphere"><Users size={24} /></div>
+              <h3>Our Target Clients</h3>
+              <p>
+                We serve corporate professionals, fashion-forward youth, modern mothers, and style enthusiasts who refuse to compromise on apparel quality. Whether you are dressing up for an executive corporate meeting, a high-society celebration gala, or a casual weekend brunch, we have your perfect statement drop.
+              </p>
             </div>
-            <h3>100% Zero Kigali Delivery Fees</h3>
-            <p>Eliminating hidden destination fees. We unpack your batches at our Nyabugogo station and distribute straight to your boutique stalls completely free.</p>
-            <span className="pill-highlight-label">Standard Policy</span>
-          </div>
 
-          <div className="commitment-display-card">
-            <div className="commitment-icon-frame">
-              <FaHandshake />
+            <div className="uj-target-card-box">
+              <div className="uj-target-icon-sphere"><Compass size={24} /></div>
+              <h3>Our Core Intentions</h3>
+              <p>
+                Our core goal is to make luxury and trending boutique fashion accessible, transparent, and effortlessly swift. By establishing a direct dedicated shipping pipeline from Muhanga straight to Kigali hubs, we bridge the gap between quality supply and fast local delivery demands with total integrity.
+              </p>
             </div>
-            <h3>Accountable Consolidations</h3>
-            <p>Every single bundle code or bale of wholesale clothing is itemized inside digital shipping files, ensuring accurate delivery logs with zero container mix-ups.</p>
-          </div>
 
-          <div className="commitment-display-card">
-            <div className="commitment-icon-frame">
-              <FaShieldAlt />
-            </div>
-            <h3>Stable Protective Cargo</h3>
-            <p>We wrap fashion items separately from hardware loads. High-tier designer bags maintain structured storage compartments to shield against deep container compression.</p>
           </div>
-
         </div>
       </section>
 
-      {/* ================= CALL TO ACTION FOOTER INTERACTIVE BLOCK ================= */}
-      <section className="about-corporate-cta-banner-section">
-        <div className="cta-banner-card-box">
-          <h2>Ready To Restock Your Boutique Inventory?</h2>
-          <p>Explore our active catalog lots clearing from Dar es Salaam port hubs or contact terminal operators directly for instant space allocations.</p>
-          <div className="cta-banner-links-row">
-            <Link to="/shop" className="btn btn-about-cta-yellow">Explore Digital Catalog</Link>
-            <Link to="/contact" className="btn btn-about-cta-outline">Connect with Agents</Link>
-          </div>
+      {/* ================= SECTION 4: CALL TO ACTION CONVERTING FOOTER ================= */}
+      <section className="uj-about-cta-banner">
+        <div className="uj-about-cta-inner">
+          <h2>Ready To Discover Your Next Favorite Fit?</h2>
+          <p>Browse our completely updated catalog divided across 22 comprehensive premium style variant groups right now.</p>
+          <Link to="/shop" className="uj-about-primary-btn">
+            Explore Full Shop Catalog <ShoppingBag size={18} />
+          </Link>
         </div>
       </section>
 
@@ -208,4 +129,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default About;

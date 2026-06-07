@@ -1,180 +1,283 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  FaShoppingBag, FaClock, FaTruckMoving, FaShieldAlt, FaBolt, 
-  FaTshirt, FaBriefcase, FaArrowRight, FaBoxes, FaHeadset,
-  FaStar, FaGlobe, FaTags
-} from 'react-icons/fa';
-import { GiRunningShoe } from 'react-icons/gi';
+import {
+  ArrowRight,
+  Truck,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  Heart,
+  Star,
+  MessageSquare,
+  HelpCircle
+} from 'lucide-react';
 import HeroSlider from '../components/HeroSlide';
+import '../styles/Home.css';
 
-import '../styles/Home.css'; 
+import Image1 from '../assets/23.JPEG';
+import Image2 from '../assets/4 (4).jpg';
+import Image3 from '../assets/22 (5).jpg';
+import Image4 from '../assets/2 (4).jpg';
+import Image5 from '../assets/2 (8).jpg';
+import Image6 from '../assets/2 (1).jpg';
 
-// Import static assets safely
-import Image10 from '../assets/10.png';
-import Image12 from '../assets/12.png';
-import Image1 from '../assets/1.png';
-import Image2 from '../assets/2.png';
-import Image3 from '../assets/3.png';
-import Image4 from '../assets/4.png';
-import Image5 from '../assets/5.png';
-import Image6 from '../assets/6.png';
-
-const mainCategories = [
-  { id: 'apparel', name: "Designer Apparel", count: "140+ Arrivals", icon: <FaTshirt />, img: Image2, delay: '0.1s' },
-  { id: 'shoes', name: "Premium Footwear", count: "85+ Products", icon: <GiRunningShoe />, img: Image3, delay: '0.2s' },
-  { id: 'bags', name: "Luxury Bags & Purses", count: "60+ Variations", icon: <FaBriefcase />, img: Image4, delay: '0.3s' }
+const categoryCards = [
+  {
+    id: 'elegant-dresses',
+    title: 'Elegant Dresses',
+    description: 'Boutique dresses, evening silhouettes and premium tailoring.',
+    count: '140+ Items',
+    image: Image4
+  },
+  {
+    id: 'matching-sets',
+    title: 'Matching Sets',
+    description: 'Coordinated high-end sets for polished everyday styling.',
+    count: '95+ Outfits',
+    image: Image2
+  },
+  {
+    id: 'valise-sweaters',
+    title: 'Valise Sweaters',
+    description: 'Luxury knitwear designed for comfort with a boutique edge.',
+    count: '70+ Pieces',
+    image: Image3
+  },
+  {
+    id: 'designer-handbags',
+    title: 'Designer Handbags',
+    description: 'Statement handbags and premium carryalls for every occasion.',
+    count: '110+ Styles',
+    image: Image1
+  }
 ];
 
 const trendingDrops = [
-  { id: 1, name: 'Premium Classic Fit Shirt', img: Image5, price: 18500, rating: 4.8, badging: 'Best Seller', delay: '0.1s' },
-  { id: 2, name: 'Street Utility Cargo Pants', img: Image6, price: 24000, rating: 4.6, badging: 'New', delay: '0.2s' },
-  { id: 3, name: 'Elite Breathable Sneakers', img: Image3, price: 45000, rating: 4.9, badging: 'Hot Deal', delay: '0.3s' },
-  { id: 4, name: 'Structured Leather Tote', img: Image4, price: 29000, rating: 4.5, badging: 'Trending', delay: '0.4s' }
+  {
+    id: 'trend-1',
+    title: 'Premium Floral Boutique Dress',
+    price: 25000,
+    label: 'Best Seller',
+    image: Image5,
+    rating: 4.9
+  },
+  {
+    id: 'trend-2',
+    title: 'Urban Casual Matching Tracksuit',
+    price: 32000,
+    label: 'New Arrival',
+    image: Image6,
+    rating: 4.8
+  },
+  {
+    id: 'trend-3',
+    title: 'Classic Valise Knit Sweater',
+    price: 18000,
+    label: 'Hot Deal',
+    image: Image3,
+    rating: 4.7
+  },
+  {
+    id: 'trend-4',
+    title: 'Luxury Leather Textured Tote Bag',
+    price: 28000,
+    label: 'Trending',
+    image: Image1,
+    rating: 4.9
+  }
+];
+
+const faqItems = [
+  {
+    question: 'How long does delivery take from Muhanga to Kigali?',
+    answer:
+      'We operate daily dispatches. Orders locked before 12:00 PM are delivered to your Kigali doorstep the same day. Afternoon orders arrive within 24 hours.'
+  },
+  {
+    question: 'Is the doorstep delivery really free?',
+    answer:
+      'Yes. There are no hidden shipping costs or rider handling fees on our entire Muhanga to Kigali route. Delivery is fully covered.'
+  },
+  {
+    question: 'How do I process payment?',
+    answer:
+      'Enter your order details in the checkout form and our system sends a secure WhatsApp manifest to +250786257303. Payment is confirmed using standard Mobile Money security verification.'
+  }
 ];
 
 const Home = () => {
-  // Real-time animation trigger implementation on component mount
-  const [isVisible, setIsVisible] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
 
   return (
-    <div className={`home-view-wrapper ${isVisible ? 'page-loaded' : ''}`}>
-      
-      {/* ================= SECTION 1: MASTER HERO INTRO SYSTEM ================= */}
-      <div className="homepage-hero-corridor-grid reveal-fade-in">
-        <div className="hero-slider-main-column">
-          <HeroSlider />
-        </div>
-        <div className="hero-side-promotions-column">
-          <div className="side-promo-widget bg-emerald-tint reveal-item slide-in-right" style={{ animationDelay: '0.2s' }}>
-            <span className="widget-tag">Customs Clearance Lane</span>
-            <h3>Dar es Salaam ➔ Kigali Manifests</h3>
-            <p>Consolidated cargo batches processing weekly with zero hidden customs duty overheads.</p>
-            <Link to="/shipping-info" className="widget-link">Track Batches <FaArrowRight className="link-icon-move" /></Link>
-          </div>
-          <div className="side-promo-widget bg-slate-tint reveal-item slide-in-right" style={{ animationDelay: '0.4s' }}>
-            <span className="widget-tag yellow-txt">VIP Procurement</span>
-            <h3>Direct Wholesale Agents</h3>
-            <p>Connect instantly with our local dispatchers operating inside major ports for customized batch sourcing.</p>
-            <Link to="/contact" className="widget-link">Message Desk <FaArrowRight className="link-icon-move" /></Link>
-          </div>
-        </div>
-      </div>
+    <main className="uj-premium-home">
+      <section className="uj-hero-container-block">
+        <HeroSlider />
+      </section>
 
-      {/* ================= SECTION 2: TRUST METRICS HORIZONTAL STRIP ================= */}
-      <section className="logistics-value-metrics-section reveal-fade-in" style={{ animationDelay: '0.3s' }}>
-        <div className="section-grid-container">
-          <div className="metric-card-box hover-lift">
-            <div className="metric-icon-sphere PulseAnimation"><FaTruckMoving /></div>
-            <div className="metric-text-column">
-              <h3>Free Local Delivery</h3>
-              <p>Enjoy guaranteed zero distribution costs right to your shop doors inside Kigali boundaries.</p>
+      <section className="uj-metrics-wrapper-bar">
+        <div className="uj-metrics-inner-grid">
+          <article className="uj-metric-premium-card">
+            <div className="uj-metric-icon-shell"><Truck size={22} /></div>
+            <div>
+              <h3>Free Express Route</h3>
+              <p>Zero-cost secure delivery from Muhanga to Kigali doorsteps with verified route coverage.</p>
             </div>
-          </div>
-          <div className="metric-card-box hover-lift">
-            <div className="metric-icon-sphere PulseAnimation"><FaShieldAlt /></div>
-            <div className="metric-text-column">
-              <h3>Secure Transit Networks</h3>
-              <p>Your textiles, shoes, and fragile leather goods are heavily padded against any transit compression vectors.</p>
+          </article>
+          <article className="uj-metric-premium-card">
+            <div className="uj-metric-icon-shell"><ShieldCheck size={22} /></div>
+            <div>
+              <h3>Verified Boutique Quality</h3>
+              <p>Every piece receives boutique-grade handling, quality control, and condition inspection.</p>
             </div>
-          </div>
-          <div className="metric-card-box hover-lift">
-            <div className="metric-icon-sphere PulseAnimation"><FaGlobe /></div>
-            <div className="metric-text-column">
-              <h3>East African Synergy</h3>
-              <p>Operating transparently within legal EAC frameworks for fluid central corridor shipments.</p>
+          </article>
+          <article className="uj-metric-premium-card">
+            <div className="uj-metric-icon-shell"><Zap size={22} /></div>
+            <div>
+              <h3>Instant Checkout</h3>
+              <p>Single-tap ordering funnels your details directly to WhatsApp for immediate processing.</p>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      {/* ================= SECTION 3: CORE CATEGORIES MATRIX ================= */}
-      <section className="shop-categories-showcase-section">
-        <div className="section-header-alignment reveal-item item-fade-up">
-          <span className="section-pre-title">EAC Direct Imports</span>
-          <h2 className="section-main-heading">Shop By Verified Category</h2>
-          <div className="heading-decorative-separator slide-expand"></div>
+      <section className="uj-steps-process-section">
+        <div className="uj-center-header-block">
+          <span className="uj-badge-pill-header">How To Order</span>
+          <h2 className="uj-section-main-title">U & J Shop Order Journey</h2>
+          <div className="uj-decorative-bar-line" />
         </div>
 
-        <div className="categories-display-grid">
-          {mainCategories.map((category) => (
-            <div key={category.id} className="premium-category-display-card reveal-item item-fade-up" style={{ animationDelay: category.delay }}>
-              <div className="category-image-container">
-                <img src={category.img} alt={category.name} className="category-parallax-image" />
-                <div className="category-tint-overlay"></div>
+        <div className="uj-steps-container-grid">
+          <article className="uj-step-node">
+            <div className="uj-step-marker">01</div>
+            <h3>Pick Your Apparel</h3>
+            <p>Browse the catalog, choose your size, and select your preferred color and finish.</p>
+          </article>
+          <article className="uj-step-node">
+            <div className="uj-step-marker">02</div>
+            <h3>Fill Delivery Details</h3>
+            <p>Tap the order button to open the quick checkout modal and enter your address and contact information.</p>
+          </article>
+          <article className="uj-step-node">
+            <div className="uj-step-marker">03</div>
+            <h3>Get WhatsApp Delivery</h3>
+            <p>The form bundles your order automatically and sends the manifest straight to our WhatsApp sales desk.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="uj-category-showcase-wrapper">
+        <div className="uj-center-header-block">
+          <span className="uj-badge-pill-header"><Sparkles size={14} /> Category Showcase</span>
+          <h2 className="uj-section-main-title">Shipping By Category</h2>
+          <p className="uj-section-subtitle">4 handpicked premium lines designed for a seamless boutique shopping experience.</p>
+          <div className="uj-decorative-bar-line" />
+        </div>
+
+        <div className="uj-category-luxury-grid">
+          {categoryCards.map((category) => (
+            <article className="uj-category-luxury-card" key={category.id}>
+              <div className="uj-cat-image-frame">
+                <img src={category.image} alt={category.title} className="uj-cat-zoom-img" />
+                <span className="uj-cat-floating-count">{category.count}</span>
               </div>
-              <div className="category-card-floating-info">
-                <div className="category-badge-pill">
-                  <span className="react-category-icon-pulse">{category.icon}</span> 
-                  <span>{category.count}</span>
-                </div>
-                <h3>{category.name}</h3>
-                <Link to="/shop" className="category-action-link">
-                  Browse Grid <FaArrowRight className="link-arrow-icon" />
+              <div className="uj-cat-content-frame">
+                <h3>{category.title}</h3>
+                <p>{category.description}</p>
+                <Link to="/shop" className="uj-cat-action-premium-btn">
+                  Explore Collection
+                  <span className="uj-arrow-circle"><ArrowRight size={14} /></span>
                 </Link>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* ================= SECTION 4: LIVE TRENDING CATALOG PREVIEW ================= */}
-      <section className="trending-catalog-preview-section">
-        <div className="section-header-alignment reveal-item item-fade-up">
-          <span className="section-pre-title">Curated Inventory</span>
-          <h2 className="section-main-heading">Trending Cargo Releases</h2>
-          <div className="heading-decorative-separator slide-expand"></div>
+      <section className="uj-trending-catalog-wrapper">
+        <div className="uj-center-header-block">
+          <span className="uj-badge-pill-header">Trending Releases</span>
+          <h2 className="uj-section-main-title">Live Product Gallery</h2>
+          <div className="uj-decorative-bar-line" />
         </div>
 
-        <div className="catalog-preview-products-grid">
+        <div className="uj-trending-products-matrix">
           {trendingDrops.map((product) => (
-            <Link to="/shop" className="home-store-product-card reveal-item item-fade-up" key={product.id} style={{ animationDelay: product.delay }}>
-              <div className="product-card-image-box">
-                <img src={product.img} alt={product.name} loading="lazy" className="zoom-subtle" />
-                <div className="product-badge-floating-tag shimmer-effect">
-                  <span>{product.badging}</span>
+            <article className="uj-premium-product-node" key={product.id}>
+              <div className="uj-prod-media-box">
+                <img src={product.image} alt={product.title} loading="lazy" />
+                <span className="uj-prod-floating-tag">{product.label}</span>
+                <button className="uj-prod-wishlist-circle" aria-label="Save item to wishlist">
+                  <Heart size={16} />
+                </button>
+              </div>
+              <div className="uj-prod-body-box">
+                <div className="uj-prod-header-meta">
+                  <h3>{product.title}</h3>
+                  <span className="uj-prod-rating-star">
+                    <Star size={14} fill="#2e7d32" color="#2e7d32" /> {product.rating}
+                  </span>
+                </div>
+                <div className="uj-prod-footer-meta">
+                  <span className="uj-prod-price-tag">{product.price.toLocaleString()} RWF</span>
+                  <Link to="/shop" className="uj-prod-instant-btn">
+                    Order Now <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
-              <div className="product-card-body">
-                <div className="product-card-header-row">
-                  <h3>{product.name}</h3>
-                  <span className="star-rating-pill"><FaStar /> {product.rating}</span>
-                </div>
-                <div className="product-card-footer-row">
-                  <span className="price-tag-frw">{product.price.toLocaleString()} RWF</span>
-                  <span className="order-btn-shortcut">Order Now <FaArrowRight className="btn-arrow-slide" /></span>
-                </div>
-              </div>
-            </Link>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* ================= SECTION 5: SPLIT CALL TO ACTIONS BANNERS ================= */}
-      <section className="split-action-promotions-section">
-        <div className="promo-banner-card banner-green-gradient reveal-item slide-in-left">
-          <div className="promo-content-text">
-            <h2>Real-time Freight Updates</h2>
-            <p>Track exactly where the fleet containers are currently clearing customs boundary checks.</p>
-            <Link to="/shipping-info" className="btn btn-promo-white button-glow">Logistics Manifests</Link>
-          </div>
-          <div className="promo-icon-bg float-animation"><FaBoxes /></div>
+      <section className="uj-faqs-wrapper">
+        <div className="uj-center-header-block">
+          <span className="uj-badge-pill-header"><HelpCircle size={14} /> FAQs</span>
+          <h2 className="uj-section-main-title">Frequently Asked Questions</h2>
+          <div className="uj-decorative-bar-line" />
         </div>
-        <div className="promo-banner-card banner-charcoal-gradient reveal-item slide-in-right">
-          <div className="promo-content-text">
-            <h2>Boutique Direct Sourcing</h2>
-            <p>Want custom color drops or size allocations? Contact our Dar es Salaam headquarters.</p>
-            <Link to="/contact" className="btn btn-promo-emerald button-glow">Message Clearance Desk</Link>
-          </div>
-          <div className="promo-icon-bg float-animation"><FaHeadset /></div>
+
+        <div className="uj-faqs-container">
+          {faqItems.map((item, index) => {
+            const isOpen = activeFaq === index;
+            return (
+              <div key={index} className={`uj-faq-item ${isOpen ? 'uj-faq-open' : ''}`}>
+                <button
+                  type="button"
+                  className="uj-faq-question"
+                  onClick={() => toggleFaq(index)}
+                  aria-expanded={isOpen}
+                >
+                  <div className="uj-faq-icon-shell"><MessageSquare size={16} /></div>
+                  <span>{item.question}</span>
+                  <span className="uj-faq-toggle-mark">{isOpen ? '−' : '+'}</span>
+                </button>
+                <div className="uj-faq-answer-wrap" style={{ maxHeight: isOpen ? '220px' : '0px' }}>
+                  <p className="uj-faq-answer">{item.answer}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-    </div>
+      <section className="uj-cta-banner-section">
+        <div className="uj-cta-banner-inner">
+          <div>
+            <p className="uj-cta-eyebrow">Free delivery across Muhanga to Kigali</p>
+            <h2>Redefine Your Everyday Style Matrix</h2>
+            <p className="uj-cta-copy">Browse boutique essentials, premium fits, and a quick checkout experience built for modern Kigali shoppers.</p>
+          </div>
+          <Link to="/shop" className="uj-cta-action-btn">
+            Browse Entire Shop Grid <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 };
 

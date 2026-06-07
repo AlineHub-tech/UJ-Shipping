@@ -1,109 +1,124 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  FaPhoneAlt, 
-  FaMobileAlt, 
-  FaInstagram, 
-  FaPaperPlane, 
-  FaWarehouse, 
-  FaPassport, 
-  FaTruckLoading 
-} from 'react-icons/fa';
+  Smartphone, 
+  MapPin, 
+  Camera, 
+  Send, 
+  Sparkles,
+  Clock,
+  CheckCircle2
+} from 'lucide-react';
 import '../styles/ContactUs.css';
 
 const ContactUs = () => {
   const [senderName, setSenderName] = useState('');
-  const [senderEmail, setSenderEmail] = useState('');
+  const [senderContact, setSenderContact] = useState('');
   const [messageBody, setMessageBody] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    if (!senderName || !senderEmail || !messageBody) {
-      return alert('Please completely populate all communication form fields!');
+    if (!senderName || !messageBody) {
+      return alert('Please fill in your Name and Message text!');
     }
-    alert(`Thank you, ${senderName}! Your dispatch inquiry has been routed to our regional agents. We will reply via email shortly.`);
+
+    const merchantWhatsAppNumber = "250786257303";
+    
+    const plainSupportMessage = `*NEW MESSAGE FROM CONTACT FORM - U & J SHOP*\n\n` +
+                                `*Customer Profile:*\n` +
+                                `• Client Name: ${senderName}\n` +
+                                `• Contact Info: ${senderContact || 'Not Provided'}\n\n` +
+                                `*Message Content:*\n` +
+                                `"${messageBody}"\n\n` +
+                                `Please dispatch a reply status update to this customer timeline!`;
+
+    const stableEndpointURL = `https://wa.me{merchantWhatsAppNumber}?text=${encodeURIComponent(plainSupportMessage)}`;
+    
+    window.open(stableEndpointURL, '_blank');
+    
     setSenderName('');
-    setSenderEmail('');
+    setSenderContact('');
     setMessageBody('');
   };
 
   return (
-    <div className="contact-view-wrapper">
+    <div className={`contact-view-wrapper ${isVisible ? 'uj-page-active' : ''}`}>
       
-      {/* ================= HERO COVER AREA ================= */}
       <div className="contact-hero-banner">
         <div className="contact-banner-overlay"></div>
         <div className="contact-banner-text-box">
-          <span className="contact-brand-pill">EAC Help Center Support</span>
-          <h1>Connect With Our Cargo Terminals</h1>
-          <p>Get immediate logistical support regarding departures from Dar es Salaam or arrivals at our Kigali warehouse terminals.</p>
+          <span className="contact-brand-pill"><Sparkles size={14} /> Direct Desk Support</span>
+          <h1>Contact Our Sales Desk</h1>
+          <p>Have inquiries about our 22 style variant groups or free route delivery details? Talk to us instantly.</p>
         </div>
       </div>
 
-      {/* ================= PRIMARY COMMUNICATIONS SECTION ================= */}
       <section className="contact-communications-split-section">
         <div className="contact-split-grid-container">
           
-          {/* Left Column: Direct Phone Hotlines & Directories */}
           <div className="contact-directory-column-info">
-            <span className="directory-pre-title">Regional Directories</span>
-            <h2>Terminal Station Hotlines</h2>
+            <span className="directory-pre-title">Get In Touch</span>
+            <h2>We Are Always Connected &amp; Ready To Serve You</h2>
+            <div className="contact-decorator-line"></div>
             <p className="directory-explainer-text">
-              Reach out directly to our field logistics supervisors and clearance agents operating inside your target economic zone for immediate transit support.
+              Reach out directly to our support desk team for quick confirmation regarding dress sizing, custom tracksuit matching, or handbag availability drops.
             </p>
 
             <div className="directory-cards-stack">
               
               <div className="directory-item-card-box">
                 <div className="directory-card-icon-bubble">
-                  <FaPhoneAlt />
+                  <Smartphone size={20} />
                 </div>
                 <div className="directory-card-text-block">
-                  <h3>Tanzania Port Dispatch Hotlines</h3>
-                  <p className="phone-digit-highlight">+255 746 880 993</p>
-                  <p className="phone-digit-highlight">+255 795 298 877</p>
-                  <span>Operating Warehouse Hours: Mon - Sat (8 AM - 6 PM)</span>
-                </div>
-              </div>
-
-              <div className="directory-item-card-box">
-                <div className="directory-card-icon-bubble">
-                  <FaMobileAlt />
-                </div>
-                <div className="directory-card-text-block">
-                  <h3>Rwanda Terminal Station Hotline</h3>
+                  <h3>WhatsApp Live Support</h3>
                   <p className="phone-digit-highlight">+250 786 257 303</p>
-                  <span>Nyabugogo Warehouse Operations: 24/7 Arrivals</span>
+                  <span>Instant chat response desk active from 7:00 AM to 10:00 PM CAT</span>
                 </div>
               </div>
 
               <div className="directory-item-card-box">
                 <div className="directory-card-icon-bubble">
-                  <FaInstagram />
+                  <MapPin size={20} />
                 </div>
                 <div className="directory-card-text-block">
-                  <h3>Social Channels & Logistics Media</h3>
+                  <h3>Operational Delivery Hubs</h3>
+                  <p className="phone-digit-highlight">Muhanga Base Hub ➔ Kigali Center</p>
+                  <span>Guaranteed completely Free Door-to-Door Shipping route</span>
+                </div>
+              </div>
+
+              <div className="directory-item-card-box">
+                <div className="directory-card-icon-bubble">
+                  <Camera size={20} />
+                </div>
+                <div className="directory-card-text-block">
+                  <h3>Social Channels &amp; Instagram Media</h3>
                   <p className="social-handle-tag">@jean.de.dieu80425</p>
-                  <span>Follow for updates on shipping drops and container batches.</span>
+                  <span>Follow us for daily updates on hot drops and seasonal boutique arrivals.</span>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* Right Column: Email Messaging Portal */}
           <div className="contact-messaging-form-wrapper">
             <div className="messaging-form-header">
-              <h3>Transmit Direct Cargo Manifest Inquiry</h3>
-              <p>Need custom procurement tracking support? Drop our core clearance desk an explicit email notification payload below.</p>
+              <h3>Send An Instant Message</h3>
+              <p>Your inputs will automatically format and bundle directly into your live WhatsApp chat interface window.</p>
             </div>
 
             <form onSubmit={handleFormSubmission} className="interactive-contact-form-node">
               <div className="form-input-field-block">
-                <label htmlFor="contact-sender-name">Your Full Professional Name:</label>
+                <label htmlFor="contact-sender-name">Your Full Name *</label>
                 <input 
                   type="text" 
                   id="contact-sender-name"
-                  placeholder="e.g., Keza Alice" 
+                  placeholder="e.g., Uwase Marie Claire" 
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
                   required 
@@ -111,66 +126,39 @@ const ContactUs = () => {
               </div>
 
               <div className="form-input-field-block">
-                <label htmlFor="contact-sender-email">Target Email Notification Address:</label>
+                <label htmlFor="contact-sender-contact">Your Phone Number or Email (Optional):</label>
                 <input 
-                  type="email" 
-                  id="contact-sender-email"
-                  placeholder="e.g., alice@example.com" 
-                  value={senderEmail}
-                  onChange={(e) => setSenderEmail(e.target.value)}
-                  required 
+                  type="text" 
+                  id="contact-sender-contact"
+                  placeholder="e.g., 0788... / claire@gmail.com" 
+                  value={senderContact}
+                  onChange={(e) => setSenderContact(e.target.value)}
                 />
               </div>
 
               <div className="form-input-field-block">
-                <label htmlFor="contact-sender-message">Elaborate Detailed Logistical Inquiry:</label>
+                <label htmlFor="contact-sender-message">Your Detailed Inquiry Message *</label>
                 <textarea 
                   id="contact-sender-message"
-                  placeholder="Elaborate details regarding your garments, size profile breakdowns, or target arrival dates..." 
+                  rows="5"
+                  placeholder="Type your questions or custom apparel specification requests here..." 
                   value={messageBody}
                   onChange={(e) => setMessageBody(e.target.value)}
                   required
                 ></textarea>
               </div>
 
+              <div className="form-free-delivery-banner-strip">
+                <CheckCircle2 size={16} />
+                <span>Free Route Shipping Coverage fully Protected</span>
+              </div>
+
               <button type="submit" className="btn btn-form-messaging-submit">
-                Transmit Manifest Message <FaPaperPlane className="plane-icon" />
+                <span>Launch WhatsApp Chat</span> <Send size={16} />
               </button>
             </form>
           </div>
 
-        </div>
-      </section>
-
-      {/* ================= CORRIDOR MAP ALIGNMENT BLOCK ================= */}
-      <section className="cross-border-corridor-map-section">
-        <div className="map-text-header-box">
-          <h2>Central EAC Highway Transit Corridor</h2>
-          <p>Our operational highway lane runs continuously from the Port of Dar es Salaam straight through the Rusumo Border Post into Kigali.</p>
-        </div>
-        <div className="mock-map-visual-placeholder">
-          <div className="map-inner-tint-overlay">
-            
-            <div className="map-floating-pin pin-dar">
-              <FaWarehouse className="map-pin-icon" /> 
-              <span>Dar es Salaam Consolidated Terminal</span>
-            </div>
-            
-            <div className="map-corridor-connecting-line"></div>
-            
-            <div className="map-floating-pin pin-border">
-              <FaPassport className="map-pin-icon" /> 
-              <span>Rusumo Clearing Post</span>
-            </div>
-            
-            <div className="map-corridor-connecting-line"></div>
-            
-            <div className="map-floating-pin pin-kigali">
-              <FaTruckLoading className="map-pin-icon" /> 
-              <span>Kigali Destination Station</span>
-            </div>
-            
-          </div>
         </div>
       </section>
 
