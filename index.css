@@ -1,0 +1,133 @@
+/* ==========================================================================
+   TARGETED MOBILE & TABLET RESPONSIVE OVERRIDES
+   This file ONLY activates on screens smaller than 992px wide.
+   It leaves your perfect desktop layout completely untouched.
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  /* 1. Global Safe Boundaries Restraints */
+  html, body, #root, .app-structural-container, .main-viewport-content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important; /* Disables the side-to-side broken scroll */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 2. Isolated Hero Slider Correction System 
+     This overwrites the custom width and margins that were pushing off-screen on touch screens */
+  .hero-slider-container,
+  .dynamic-hero-slider-section,
+  .hero-slide-item,
+  .slide-background {
+    width: 100% ;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Adjust spacing inside the hero for mobile viewports cleanly */
+  .hero-slide-item {
+    padding: 20px 15px !important;
+    text-align: center !important;
+  }
+
+  .hero-slide-content-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-slide-title {
+    font-size: 1.85rem !important; /* Scaled text size constraints for mobile reading */
+  }
+
+  .hero-slide-description {
+    font-size: 0.95rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-action-row {
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  .hero-action-row .btn {
+    width: 100% !important; /* Balanced layout look */
+  }
+
+  /* 3. Global Section Header Corrections
+     Removes manual absolute translations pushing text off-center */
+  .section-title,
+  .section-header-alignment {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    position: relative !important;
+    text-align: center !important;
+  }
+
+  /* 4. Page Wrapper Protection System */
+  .home-view-wrapper,
+  .shop-view-container,
+  .shipping-view-wrapper,
+  .about-view-wrapper,
+  .contact-view-wrapper {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 5. Fluid Responsive Grid Control Overrides */
+  .catalog-products-grid,
+  .products-grid,
+  .categories-display-grid,
+  .top-categories-grid,
+  .commitments-cards-grid,
+  .faq-questions-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    /* Automatically scales column grids safely down based on mobile devices dimensions */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; 
+    gap: 20px !important;
+  }
+
+  /* 6. Promotional Split Banner Correction Nodes */
+  .split-action-promotions-section {
+    grid-template-columns: 1fr !important; /* Stacks column grids nicely onto mobile systems */
+    gap: 16px !important;
+    padding: 0 !important;
+    margin: 20px 0 !important;
+    width: 100% !important;
+  }
+
+  .promo-banner-card {
+    padding: 24px !important;
+    width: 100% !important;
+  }
+}
+
+/* Hard Mobile Display Screen Optimization Lanes (Extreme Small Viewports) */
+@media (max-width: 540px) {
+  .catalog-products-grid,
+  .products-grid {
+    grid-template-columns: 1fr !important; /* Force single column item blocks stacks for easy scrolling views */
+    justify-content: center !important;
+  }
+
+  .store-product-card {
+    max-width: 320px !important;
+    margin: 0 auto !important; /* Prevents cards from extending awkwardly */
+  }
+}
