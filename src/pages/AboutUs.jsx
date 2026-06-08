@@ -9,6 +9,7 @@ import {
   Users, 
   Compass 
 } from 'lucide-react';
+import OptimizedImage from '../components/OptimizedImage';
 import '../styles/AboutUs.css';
 
 import AboutHeroImg from '../assets/23.jpeg';
@@ -26,7 +27,13 @@ const About = () => {
       
       {/* ================= SECTION 1: HERO TEXT HEADER BANNER ================= */}
       <section className="uj-about-hero-banner">
-        <img src={AboutHeroImg} alt="U & J Boutique Fashion Hub" className="uj-about-hero-bg" />
+        <OptimizedImage
+          src={AboutHeroImg}
+          alt="U & J Boutique Fashion Hub"
+          className="uj-about-hero-bg"
+          webpFileName="23.webp"
+          eager
+        />
         <div className="uj-about-hero-overlay"></div>
         <div className="uj-about-hero-content">
           <span className="uj-about-badge"><Sparkles size={14} /> Redefining Apparels</span>
@@ -71,7 +78,12 @@ const About = () => {
 
             <div className="uj-about-image-column">
               <div className="uj-about-img-wrapper">
-                <img src={VisionImg} alt="U & J Shop Core Vision Outfit" className="uj-about-side-img" />
+                <OptimizedImage
+                  src={VisionImg}
+                  alt="U & J Shop Core Vision Outfit"
+                  className="uj-about-side-img"
+                  webpFileName="4-4.webp"
+                />
                 <div className="uj-about-floating-card-metric">
                   <h3>100%</h3>
                   <span>Verified Buyer Satisfaction</span>

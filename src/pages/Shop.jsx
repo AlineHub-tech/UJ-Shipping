@@ -1,5 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { ShoppingBag, Star, X, Smartphone } from 'lucide-react';
+import OptimizedImage from '../components/OptimizedImage';
 import '../styles/Shop.css';
 
 import Img_1_0 from '../assets/1.jpg';
@@ -1068,7 +1069,11 @@ const Shop = () => {
         {filteredProducts.map((product) => (
           <article className="uj-product-card" key={product.id}>
             <div className="uj-product-image">
-              <img src={product.image} alt={product.name} />
+              <OptimizedImage
+                src={product.image}
+                alt={product.name}
+                className="uj-product-image-img"
+              />
               <span className="uj-free-delivery-badge">Free Delivery</span>
             </div>
             <div className="uj-product-info">

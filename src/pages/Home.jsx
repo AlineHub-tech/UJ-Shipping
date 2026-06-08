@@ -12,6 +12,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import HeroSlider from '../components/HeroSlide';
+import OptimizedImage from '../components/OptimizedImage';
 import '../styles/Home.css';
 
 import Image1 from '../assets/23.jpeg';
@@ -27,28 +28,32 @@ const categoryCards = [
     title: 'Elegant Dresses',
     description: 'Boutique dresses, evening silhouettes and premium tailoring.',
     count: '140+ Items',
-    image: Image4
+    image: Image4,
+    webp: '2-4.webp'
   },
   {
     id: 'matching-sets',
     title: 'Matching Sets',
     description: 'Coordinated high-end sets for polished everyday styling.',
     count: '95+ Outfits',
-    image: Image2
+    image: Image2,
+    webp: '4-4.webp'
   },
   {
     id: 'valise-sweaters',
     title: 'Valise Sweaters',
     description: 'Luxury knitwear designed for comfort with a boutique edge.',
     count: '70+ Pieces',
-    image: Image3
+    image: Image3,
+    webp: '22-5.webp'
   },
   {
     id: 'designer-handbags',
     title: 'Designer Handbags',
     description: 'Statement handbags and premium carryalls for every occasion.',
     count: '110+ Styles',
-    image: Image1
+    image: Image1,
+    webp: '23.webp'
   }
 ];
 
@@ -59,6 +64,7 @@ const trendingDrops = [
     price: 25000,
     label: 'Best Seller',
     image: Image5,
+    webp: '2-8.webp',
     rating: 4.9
   },
   {
@@ -67,6 +73,7 @@ const trendingDrops = [
     price: 32000,
     label: 'New Arrival',
     image: Image6,
+    webp: '2-1.webp',
     rating: 4.8
   },
   {
@@ -75,6 +82,7 @@ const trendingDrops = [
     price: 18000,
     label: 'Hot Deal',
     image: Image3,
+    webp: '22-5.webp',
     rating: 4.7
   },
   {
@@ -83,6 +91,7 @@ const trendingDrops = [
     price: 28000,
     label: 'Trending',
     image: Image1,
+    webp: '23.webp',
     rating: 4.9
   }
 ];
@@ -182,9 +191,14 @@ const Home = () => {
           {categoryCards.map((category) => (
             <article className="uj-category-luxury-card" key={category.id}>
               <div className="uj-cat-image-frame">
-                <img src={category.image} alt={category.title} className="uj-cat-zoom-img" />
-                <span className="uj-cat-floating-count">{category.count}</span>
-              </div>
+              <OptimizedImage
+                src={category.image}
+                alt={category.title}
+                className="uj-cat-zoom-img"
+                webpFileName={category.webp}
+              />
+              <span className="uj-cat-floating-count">{category.count}</span>
+            </div>
               <div className="uj-cat-content-frame">
                 <h3>{category.title}</h3>
                 <p>{category.description}</p>
@@ -209,7 +223,12 @@ const Home = () => {
           {trendingDrops.map((product) => (
             <article className="uj-premium-product-node" key={product.id}>
               <div className="uj-prod-media-box">
-                <img src={product.image} alt={product.title} loading="lazy" />
+                <OptimizedImage
+                  src={product.image}
+                  alt={product.title}
+                  className="uj-prod-media-box-img"
+                  webpFileName={product.webp}
+                />
                 <span className="uj-prod-floating-tag">{product.label}</span>
                 <button className="uj-prod-wishlist-circle" aria-label="Save item to wishlist">
                   <Heart size={16} />
