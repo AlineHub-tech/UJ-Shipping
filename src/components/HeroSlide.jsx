@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 import '../styles/HeroSlide.css';
 
 // ================= FIXED IMAGE IMPORT LIFELINE SYSTEM =================
@@ -15,28 +16,32 @@ const slidesData = [
     title: "Luxury Dresses & Trendy Fashion drops",
     subtitle: "Muhanga ➔ Kigali | Fast Free Delivery",
     description: "Upgrade your wardrobe with our premium collection of elegant dresses and high-end boutique apparel selected just for you.",
-    image: Image1
+    image: Image1,
+    webp: '14-2.webp'
   },
   {
     id: 2,
     title: "Premium Matching Sets & Tracksuits",
     subtitle: "Streetwear & Casual Match Outfits",
     description: "Discover exclusive top-and-bottom clothing combinations. Perfectly tailored fits designed for maximum comfort and style.",
-    image: Image2
+    image: Image2,
+    webp: '2-4.webp'
   },
   {
     id: 3,
     title: "Designer Handbags & Premium Bags",
     subtitle: "U & J Premium Accessories Hub",
     description: "Complete your outfit with head-turning leather luxury accessories. High-quality designs delivered safely to your doorstep.",
-    image: Image3
+    image: Image3,
+    webp: '1-8.webp'
   },
   {
     id: 4,
     title: "Exclusive Valise & Smart Travel Bags",
     subtitle: "Heavy-Duty Quality Travel Goods",
     description: "Travel in absolute style and confidence with our durable, spacious luxury luggage containers and statement bags.",
-    image: Image4
+    image: Image4,
+    webp: '10-2.webp'
   }
 ];
 
@@ -68,10 +73,12 @@ const HeroSlider = () => {
             key={slide.id} 
             className={`uj-slide-item ${isCurrent ? 'uj-slide-active' : ''}`}
           >
-            <img
+            <OptimizedImage
               src={slide.image}
               alt={slide.title}
               className="uj-slide-bg-img"
+              webpFileName={slide.webp}
+              eager={isCurrent}
             />
             <div className="uj-slide-image-overlay" />
             <div className="uj-slide-content">
