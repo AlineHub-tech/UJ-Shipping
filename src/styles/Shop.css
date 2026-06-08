@@ -69,6 +69,40 @@
   border-color: #2e7d32;
 }
 
+/* Search bar above filters */
+.uj-shop-search-container {
+  width: 100%;
+  max-width: 560px;
+}
+
+.uj-shop-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #e6e6e6);
+  background-color: #ffffff;
+  box-shadow: 0 6px 18px rgba(2, 148, 82, 0.04);
+  font-weight: 600;
+}
+
+.uj-shop-search-input::placeholder {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.uj-shop-search-clear {
+  background: transparent;
+  border: 1px solid var(--border-color, #e6e6e6);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.uj-shop-search-clear:hover {
+  background-color: #f3f4f6;
+}
+
 .uj-products-grid {
   display: grid;
   grid-template-columns: 1fr;

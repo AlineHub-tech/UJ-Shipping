@@ -306,6 +306,13 @@ body {
   padding: 0 15px;
 }
 
+/* Ensure equal-height cards in the trending grid */
+.uj-trending-products-matrix .uj-premium-product-node {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .uj-premium-product-node {
   display: flex;
   flex-direction: column;
