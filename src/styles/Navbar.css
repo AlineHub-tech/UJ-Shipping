@@ -178,12 +178,14 @@
   align-items: center;
   gap: 6px;
   background-color: var(--light-gray);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    pointer-events: none; /* prevent invisible menu from blocking page interactions */
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--primary-black);
+    pointer-events: auto;
 }
 
 .uj-pin-icon {
@@ -462,11 +464,13 @@
     opacity: 0;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    display: none; /* hide mobile panel when closed to avoid blocking interactions */
   }
 
   .uj-navbar-menu.mobile-open {
     transform: translateY(0);
     opacity: 1;
+    display: flex;
   }
 
   .uj-nav-links {
