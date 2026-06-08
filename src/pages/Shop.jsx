@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Star, X, Smartphone } from 'lucide-react';
 import OptimizedImage from '../components/OptimizedImage';
 import '../styles/Shop.css';
@@ -970,10 +970,49 @@ const FILTERS = [
 
 const Shop = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [orderForm, setOrderForm] = useState({ name: "", phone: "", selectedSize: "", selectedColor: "" });
 
-  const filteredProducts = activeFilter === 'all' ? PRODUCTS_DATA : PRODUCTS_DATA.filter((product) => product.category === activeFilter);
+  const filteredByCategory = activeFilter === 'all'
+    ? PRODUCTS_DATA
+    : PRODUCTS_DATA.filter((product) => product.category === activeFilter);
+
+  const filteredProducts = filteredByCategory.filter((product) => {
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      product.name.toLowerCase().includes(q) ||
+      (product.group || '').toLowerCase().includes(q) ||
+      (product.category || '').toLowerCase().includes(q)
+    );
+  });
+
+  // DOM-based fallback filter: ensure visible results update immediately when searchQuery changes
+  useEffect(() => {
+    try {
+      const q = (searchQuery || '').toLowerCase().trim();
+      const cards = Array.from(document.querySelectorAll('.uj-product-card'));
+      cards.forEach((card) => {
+        const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
+        const meta = (card.querySelector('.uj-sizes')?.textContent || '') + ' ' + (card.querySelector('.uj-colors')?.textContent || '');
+        const combined = (card.textContent || '').toLowerCase();
+        const match = !q || title.includes(q) || meta.toLowerCase().includes(q) || combined.includes(q);
+        card.style.display = match ? '' : 'none';
+      });
+    } catch (err) {
+      // silent
+    }
+  }, [searchQuery]);
+
+  // Attach a native input listener so plain typing always updates React state
+  useEffect(() => {
+    const el = document.querySelector('.uj-shop-search-input');
+    if (!el) return;
+    const handler = (e) => setSearchQuery(e.target.value || '');
+    el.addEventListener('input', handler);
+    return () => el.removeEventListener('input', handler);
+  }, []);
 
   const openOrderModal = (product) => {
     setSelectedProduct(product);
@@ -1052,17 +1091,42 @@ const Shop = () => {
         </div>
       </header>
 
-      <div className="uj-filter-section" style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "8px", marginBottom: "28px" }}>
-        {FILTERS.map((filter) => (
+      <div style={{ marginBottom: '18px' }}>
+        <div className="uj-shop-search-container" style={{ marginBottom: '10px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <input
+            type="text"
+            className="uj-shop-search-input"
+            placeholder="Search products, e.g. Dresses, Bag, Sweater..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+            aria-label="Search products"
+          />
           <button
-            key={filter.key}
-            className={`uj-filter-btn ${activeFilter === filter.key ? "active" : ""}`}
-            style={{ flex: "0 0 auto" }}
-            onClick={() => setActiveFilter(filter.key)}
+            type="button"
+            className="uj-shop-search-clear"
+            onClick={() => setSearchQuery('')}
+            aria-label="Clear search"
           >
-            {filter.label}
+            Clear
           </button>
-        ))}
+          <div className="uj-shop-search-meta" style={{ marginLeft: '8px', color: '#6b7280', fontSize: '0.9rem' }}>
+            {filteredProducts.length} results
+          </div>
+        </div>
+
+        <div className="uj-filter-section" style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "8px", marginBottom: "8px" }}>
+          {FILTERS.map((filter) => (
+            <button
+              key={filter.key}
+              className={`uj-filter-btn ${activeFilter === filter.key ? "active" : ""}`}
+              style={{ flex: "0 0 auto" }}
+              onClick={() => setActiveFilter(filter.key)}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="uj-products-grid">

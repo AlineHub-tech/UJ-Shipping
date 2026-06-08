@@ -36,8 +36,8 @@ const ContactUs = () => {
                                 `"${messageBody}"\n\n` +
                                 `Please dispatch a reply status update to this customer timeline!`;
 
-    const stableEndpointURL = `https://wa.me{merchantWhatsAppNumber}?text=${encodeURIComponent(plainSupportMessage)}`;
-    
+    const stableEndpointURL = `https://wa.me/${merchantWhatsAppNumber}?text=${encodeURIComponent(plainSupportMessage)}`;
+
     window.open(stableEndpointURL, '_blank');
     
     setSenderName('');
