@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ShippingInfo from './pages/ShippingInfo';
@@ -29,6 +30,7 @@ function App() {
         
         {/* Informational Desktop/Mobile Grid Footer */}
         <Footer />
+        <WhatsAppFloat />
       </div>
     </Router>
   );
