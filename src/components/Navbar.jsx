@@ -34,6 +34,40 @@ const Navbar = () => {
   const closeMenu = () => setIsMenuOpen(false);
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
+  // Ensure mobile menu positions exactly below header when opened (fix large top gap)
+  useEffect(() => {
+    const menuEl = document.querySelector('.uj-navbar-menu');
+    const headerEl = document.querySelector('.uj-navbar-header');
+    if (!menuEl || !headerEl) return;
+
+    const adjustTop = () => {
+      const h = Math.round(headerEl.getBoundingClientRect().height);
+      menuEl.style.top = `${h}px`;
+    };
+
+    if (isMenuOpen) {
+      adjustTop();
+      // force inline transform/opacity to avoid cascade timing issues
+      menuEl.style.transform = 'translateY(0)';
+      menuEl.style.opacity = '1';
+      window.addEventListener('resize', adjustTop);
+    } else {
+      menuEl.style.top = '';
+      menuEl.style.transform = '';
+      menuEl.style.opacity = '';
+      window.removeEventListener('resize', adjustTop);
+    }
+
+    return () => {
+      window.removeEventListener('resize', adjustTop);
+      if (menuEl) {
+        menuEl.style.top = '';
+        menuEl.style.transform = '';
+        menuEl.style.opacity = '';
+      }
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className={`uj-navbar-header ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="uj-navbar-container">
